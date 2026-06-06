@@ -17,7 +17,7 @@ $$
 势力区定义为
 
 $$
-V_i=\{x\in\Omega:\varphi_i(x)\le\varphi_j(x),\,\forall j\neq i\}.
+V_i=\lbrace x\in\Omega \mid \varphi_i(x)\le\varphi_j(x),\,\forall j\neq i \rbrace.
 $$
 
 旗 $i$ 与 $j$ 的分界线 $`\{\varphi_i=\varphi_j\}`$ 为阿波罗尼奥斯圆；$`r_i=r_j`$ 时退化为直线。边界标签 $`\tau`$ 指定 $`\partial\Omega`$ 各边（除分界点外）的目标归属。要求
@@ -94,7 +94,7 @@ $$
 尚需插入 $N-1$ 面旗。第 $i$ 面旗有位置 $`p_i\in\mathbb R^2`$ 与管辖半径 $`r_i>0`$。配置记为
 
 $$
-\mathcal S=\{p_1,\ldots,p_N\}\cup\{r_1,\ldots,r_N\},\qquad r_1=1.
+\mathcal S=\lbrace p_1,\ldots,p_N\rbrace\cup\lbrace r_1,\ldots,r_N\rbrace,\qquad r_1=1.
 $$
 
 对 $x\in\mathbb R^2$，到第 $i$ 面旗的**性价比**（乘性泰森权）定义为
@@ -106,7 +106,7 @@ $$
 $x$ 归 $`\varphi_i`$ **最小**的那面旗管辖。记势力区
 
 $$
-V_i:=\{x\in\Omega:\ \varphi_i(x)\le\varphi_j(x)\ \forall j\neq i\}
+V_i:=\lbrace x\in\Omega \mid \varphi_i(x)\le\varphi_j(x)\ \forall j\neq i \rbrace
 $$
 
 （分界线上归属可任取一侧，零测度不影响面积与审计）。
@@ -145,7 +145,7 @@ $$
 **违约集**：
 
 $$
-\mathrm{Viol}(\mathcal S;\tau):=\{s\in\partial\Omega:\ \sigma_{\mathcal S}(s)\neq\tau(s)\}.
+\mathrm{Viol}(\mathcal S;\tau):=\lbrace s\in\partial\Omega \mid \sigma_{\mathcal S}(s)\neq\tau(s) \rbrace.
 $$
 
 **引理 2.1**　$`\mathfrak{Sol}`$ 为半代数集。若 $E$ 个钉方程在一般位置独立，则 $`\dim\mathfrak{Sol}\ge\max(0,\mathrm{dof}-E)`$。
@@ -228,7 +228,7 @@ $$
 $n=2$ 时边界审计用性价比差 $`\chi_{12}(x)=\varphi_2(x)-\varphi_1(x)`$。内禀违约集（无需人工标渗漏边）：
 
 $$
-\mathrm{Viol}(\mathcal S;\mathcal B):=\{s\in\partial\Omega:\ \sigma_{\mathcal S}(s)\neq\tau_{\mathcal B}(s)\}.
+\mathrm{Viol}(\mathcal S;\mathcal B):=\lbrace s\in\partial\Omega \mid \sigma_{\mathcal S}(s)\neq\tau_{\mathcal B}(s) \rbrace.
 $$
 
 **指标**（半代数维数）：
@@ -314,7 +314,7 @@ $$
 记 $`\mathcal U`$ 满足 $`\mathfrak E^{\mathrm{mul}}`$ 且 $`\mathrm{Viol}=\varnothing`$、$`\bigcup_i V_i=D`$，则
 
 $$
-\mathfrak{Sol}^{\mathrm{mul}}(f_D,\gamma,p_1,\tau;\mathfrak g):=\{\mathcal U\}.
+\mathfrak{Sol}^{\mathrm{mul}}(f_D,\gamma,p_1,\tau;\mathfrak g):=\lbrace \mathcal U \rbrace.
 $$
 
 ### 4.6　引理 M★.0
@@ -574,7 +574,7 @@ $$
 ### §8.1 扇形设定
 
 $$
-\Omega=\{(\rho,\varphi):\ 0\le \rho\le R,\ \lvert\varphi\rvert\le\alpha\},\qquad \alpha\in(0,\pi),\ R>0.
+\Omega=\lbrace(\rho,\varphi)\mid 0\le \rho\le R,\ \lvert\varphi\rvert\le\alpha\rbrace,\qquad \alpha\in(0,\pi),\ R>0.
 $$
 
 边界：外弧 $`\Gamma_{\mathrm{out}}`$（$`\rho=R`$），径向边 $OA,OB$（$`\varphi=\pm\alpha`$）。角点
@@ -586,7 +586,7 @@ $$
 已知 $`p_1=(a,0)`$，$0<a<R$，$`r_1=1`$。对称 Ansatz $`p_2=(b,0)`$，$`r_2=\lambda`$。势力区
 
 $$
-V_2=\{x\in\Omega:\ \tfrac{d(x,p_2)}{\lambda}<d(x,p_1)\},\qquad V_1=\Omega\setminus V_2.
+V_2=\lbrace x\in\Omega \mid \tfrac{d(x,p_2)}{\lambda}<d(x,p_1) \rbrace,\qquad V_1=\Omega\setminus V_2.
 $$
 
 路线 A：仅钉 $M=(R,0)$，$a<b<R$，

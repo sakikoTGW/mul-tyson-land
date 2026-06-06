@@ -44,6 +44,9 @@ for i, line in enumerate(lines, 1):
     if "$$" not in line and re.search(r"(?<![\\lrvt])\|\\Omega\|", line):
         issues.append((i, "raw |Omega| outside display", line.strip()[:120]))
 
+    if re.search(r"=\{[^\\]|:\\s+[^$]", line) and ("$$" in lines[i - 2] if i > 2 else False):
+        issues.append((i, "raw { in display math (use lbrace)", line.strip()[:120]))
+
     if re.search(r"\$M\\in\\Gamma_\{12\}\$ [^\s(（]", line) and "仍在" not in line and "钉点 $M$" not in line:
         issues.append((i, "fragment $M\\in\\Gamma_{12}$", line.strip()[:120]))
 

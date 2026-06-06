@@ -195,6 +195,9 @@ def fix_display_block(part: str) -> str:
     inner = part[2:-2] if part.startswith("$$") and part.endswith("$$") else part
     inner = re.sub(r"(?<![\\lrvt])\|(\\Omega)\|", r"\\lvert\1\\rvert", inner)
     inner = re.sub(r"(?<![\\lrvt])\|(\\varphi)\|", r"\\lvert\1\\rvert", inner)
+    # GitHub strips backslash before { in some pipelines; use \lbrace/\rbrace
+    inner = inner.replace(r"\{", r"\lbrace ").replace(r"\}", r" \rbrace")
+    inner = re.sub(r"\\lbrace\s+([^|]+?):\s+", r"\\lbrace \1 \\mid ", inner)
     return "$$" + inner + "$$" if part.startswith("$$") else inner
 
 FRAGMENT_REPL = [
