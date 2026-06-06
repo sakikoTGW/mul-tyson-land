@@ -15,7 +15,7 @@ $$
 \sigma_{\mathcal S}(s)=\tau(s)\ \text{于}\ s\in\partial\Omega\ \text{（分界点除外）},
 $$
 
-其中 $\sigma_{\mathcal S}(x)=\arg\min_i\varphi_i(x)$。
+其中 $\sigma_{\mathcal S}(x)=\operatorname{argmin}_i\varphi_i(x)$。
 
 **反问题**：已知 $\Omega,p_1,\tau$，求 $(p_2,\ldots,p_N,r_2,\ldots,r_N)$，并判定 $\mathfrak{Sol}$ 为无解、唯一、有限或无穷；无穷时给出参数化闭式。
 
@@ -52,7 +52,7 @@ $$
 对 $x\in\mathbb R^2$，到第 $i$ 面旗的**性价比**（乘性泰森权）定义为
 
 $$
-\boxed{\ \varphi_i(x):=\frac{\|x-p_i\|}{r_i}\ }\qquad (1.1)
+\boxed{\varphi_i(x):=\frac{\|x-p_i\|}{r_i}} \qquad (1.1)
 $$
 
 $x$ 归 $\varphi_i$ **最小**的那面旗管辖。记势力区
@@ -66,7 +66,7 @@ $$
 **支配场**：
 
 $$
-\sigma_{\mathcal S}(x):=\operatorname*{argmin}_{1\le i\le N}\varphi_i(x).
+\sigma_{\mathcal S}(x):=\operatorname{argmin}_{1\le i\le N}\varphi_i(x).
 $$
 
 ### §1.3 势力分界线：阿波罗尼奥斯圆
@@ -99,6 +99,18 @@ $$
 $$
 \mathrm{Viol}(\mathcal S;\tau):=\{s\in\partial\Omega:\ \sigma_{\mathcal S}(s)\neq\tau(s)\}.
 $$
+
+**引理 2.1**　$\mathfrak{Sol}$ 为半代数集。若 $E$ 个钉方程在一般位置独立，则 $\dim\mathfrak{Sol}\ge\max(0,\mathrm{dof}-E)$。
+
+证明. 每个独立多项式等式至多使解集降维 1。若 $E<\mathrm{dof}$，维数严格为正。证毕.
+
+**引理 2.2**　$r_1\neq r_2$ 时 $\{\varphi_1=\varphi_2\}$ 为圆；$r_1=r_2$ 时为直线。
+
+证明. $\|x-p_1\|/r_1=\|x-p_2\|/r_2$ 平方整理即 $\|x-p_1\|^2 r_2^2=\|x-p_2\|^2 r_1^2$，为标准阿波罗尼奥斯圆方程。证毕.
+
+**引理 2.3**　$N=2$ 时 $V_1\cup V_2=\Omega$。
+
+证明. 对 $x\in\Omega$，$\varphi_1(x)\le\varphi_2(x)$ 或 $\varphi_2(x)\le\varphi_1(x)$。证毕.
 
 ---
 
@@ -195,7 +207,7 @@ $$
 
 $$
 n_{\min}=\begin{cases}
-2, & m_{\mathrm{eff}}=0,\\[6pt]
+2, & m_{\mathrm{eff}}=0,\\
 3, & m_{\mathrm{eff}}\ge 1.
 \end{cases}
 $$
@@ -213,12 +225,89 @@ $m_{\mathrm{eff}}\ge 1$ 时第三面旗可取秩 3 配置 $(p_3,r_3)=(p_2,\lambd
 
 ### 已封口与仍开放（主文稿 W.3）
 
-| 已封口 | 仍开放 |
-|--------|--------|
+| 已证 | 未证 |
+|------|------|
 | W-存在/唯一/多解归约（W.10 + W） | 弱 $\mathcal B$ 下 $n_{\min}$ |
 | $\mathrm{Viol}$ 内禀化 | 一般 $\Omega$ 的 $Z(\Omega)$ 统一指标 |
 | $\Sigma_9$ 扇形三分 | $b_\eta$ 全局初等闭式 |
 | 定理 M★：$n_{\min}\in\{2,3\}$（秩 3） | 几何分离路线对一切 $\Omega$ 的存在性 |
+
+### 4.4　假设 H
+
+| 编号 | 内容 |
+|------|------|
+| H1 | $\Omega$ 有界，$\partial\Omega=\bigcup_i\Gamma_i$，每段局部 $f_i(x,y)=0$，$\nabla f_i\neq0$ |
+| H2 | $\mathcal E\subset\{\Gamma_i\}$ 有限；每 $e\in\mathcal E$ 有 $C^1$ 参数化 $\gamma_e$ |
+| H3 | 路线 A，$F(x,y)=\dfrac{d(p_2)}{\lambda}-d(p_1)$ |
+| H4 | 单组 $\mathcal S$；拼接时 G2 |
+
+### 4.5　方程系统 $\mathfrak E^{\mathrm{mul}}$
+
+参数化 $\partial D=\{\gamma(s):s\in\mathcal S\}$。未知量 $\mathcal U=(p_2,\ldots,p_N,r_1,\ldots,r_N)$。
+
+**(A) 外边界归属**　对 $s\in\mathcal S$，目标标签 $\tau(s)$：
+
+$$
+\varphi_{\tau(s)}(\gamma(s))\le \varphi_j(\gamma(s)),\quad \forall j\neq\tau(s).
+$$
+
+等号仅在 tie 集；平方去根号后为多项式等式/不等式。
+
+**(B) 内胞邻接**　对每个预期相邻胞对 $(i,j)$，存在 $x_{ij}\in D$ 使 $\varphi_i(x_{ij})=\varphi_j(x_{ij})$，即
+
+$$
+\|x-p_i\|^2 r_j^2=\|x-p_j\|^2 r_i^2.
+$$
+
+**(C) 内顶点**　三条及以上 $\Gamma_{ij}$ 在 $D$ 内交于 $x_\ast$ 时，联立多个二次方程。
+
+**(D) 可行性**　$r_i>0$；G3 钉点 $\Pi$；非退化 $\mathcal U\notin\mathfrak D$。
+
+$$
+\mathfrak{Sol}^{\mathrm{mul}}(f_D,\gamma,p_1,\tau;\mathfrak g):=\{\mathcal U:\ \mathcal U\text{ 满足 }\mathfrak E^{\mathrm{mul}},\ \mathrm{Viol}=\varnothing,\ \bigcup_i V_i=D\}.
+$$
+
+### 4.6　引理 M★.0
+
+设 $(p_3,r_3)=(p_2,\lambda)$。则对一切 $X\in\Omega$，$X$ 不能为 $V_2$ 严格内点。
+
+证明. $X\in V_2$ 严格内点当且仅当 $d(X,p_2)/\lambda<d(X,p_1)$ 且 $d(X,p_2)/\lambda<d(X,p_3)/r_3$。由 $p_3=p_2$、$r_3=\lambda$，后式化为 $d(X,p_2)<d(X,p_2)$，恒假。证毕.
+
+### 4.7　定理 M★ 的证明
+
+记 $m_{\mathrm{eff}}=|\{e\in\mathcal E:\ \mathcal S_2(e)\neq\varnothing\}|$。
+
+若 $m_{\mathrm{eff}}=0$，则 $\forall e\in\mathcal E$，$\min\chi_e\ge0$，由 M.I 得 $n_{\min}=2$。
+
+若 $m_{\mathrm{eff}}\ge1$，存在渗漏边，两面旗不满足 $\mathcal B^\*$，故 $n_{\min}\ge3$。取 $(p_3,r_3)=(p_2,\lambda)$，由引理 M★.0，$\mathcal E$ 上无旗 2 严格开段；$M\in\Gamma_{12}$ 不变。故 $n=3$ 可行，$n_{\min}\le3$。合并得 $n_{\min}=3$。证毕.
+
+### 4.8　推论 M（完整）
+
+**M.I**　强 $\mathcal B^\*$ 下 $n=2$ 可行当且仅当 $\forall e\in\mathcal E$，$\min_{t}\chi_e(t)\ge0$，其中 $\chi_e=F\circ\gamma_e$。成立则 $n_{\min}=2$。
+
+**M.II**　M.I 失败时，秩 3 共点 $(p_3,r_3)=(p_2,\lambda)$ 在路线 A 下实现强 $\mathcal B^\*$，故 $n_{\min}=3$。
+
+**M.III**　几何分离（$p_3\not\equiv p_2$）且守卫功能不相容时，$n_{\min}^{\mathrm{geo}}\ge 2+m_{\mathrm{eff}}$。
+
+**M.IV**　若每条 $e_i\in\mathcal E$ 的 14.4 型守卫 $(p_{2+i},r_{2+i})$ 满足半径下界、$M$-安全且无交叉抢边，则 $n_{\min}^{\mathrm{geo}}=2+m_{\mathrm{eff}}$。
+
+**M.V（障碍）**
+
+| 障碍 | 条件 | 结论 |
+|------|------|------|
+| 非共点单站 | 对称 $\mathcal B^\*$ + 单 $p_3\not\equiv p_2$ | 水平守卫不等式不可行 |
+| 孔弧轴上分离 | $p_3$ 在轴上且 $\chi(0)<0$ | 几何分离无解 |
+| 单钉吞不尽 | 单站钉 $Q_e$ | $\mathcal S_2(e)$ 内仍有 $V_2$ 严格点 |
+
+### 4.9　$Z(\Omega)$（单连通）
+
+设 $\Omega$ 单连通、边界分段 $C^1$。取 Riemann 映射 $\Phi:\Omega\to\mathbb D$。定义
+
+$$
+Z(\Omega):=\Bigl(\Phi,\ \theta\in\mathbb R/2\pi\mathbb Z\mapsto\gamma_{\mathrm{out}}(\theta):=\Phi^{-1}(e^{i\theta})\Bigr).
+$$
+
+$H\ge1$ 时 $Z(\Omega):=(\Phi_{\mathrm{mc}},\{\theta_{\mathrm{out}}\},\{\theta_{\mathrm{in}}^{(h)}\})$。扇形、矩形、L 形均为向 $Z(\Omega)$ 代入显式 $\Phi$ 的算例。
 
 ---
 
@@ -229,8 +318,7 @@ $m_{\mathrm{eff}}\ge 1$ 时第三面旗可取秩 3 配置 $(p_3,r_3)=(p_2,\lambd
 取两旗、共线对称：
 
 $$
-p_1=(a,y_0),\quad r_1=1;\qquad p_2=(b,y_0),\quad r_2=\lambda>0.
- \qquad (1.2)
+p_1=(a,y_0),\quad r_1=1;\qquad p_2=(b,y_0),\quad r_2=\lambda>0. \qquad (1.2)
 $$
 
 未知数为 $(b,\lambda)$；**本征自由度** $\mathrm{dof}=2$。
@@ -240,15 +328,13 @@ $$
 边界点 $M\in\partial\Omega$ **钉**在两面旗分界线上，记 $M\in\Gamma_{12}$：
 
 $$
-\boxed{\ \frac{d(M,p_2)}{\lambda}=\frac{d(M,p_1)}{1}\ }.
- \qquad (1.3)
+\boxed{\frac{d(M,p_2)}{\lambda}=\frac{d(M,p_1)}{1}} \qquad (1.3)
 $$
 
 代数形式（与阿波罗尼奥斯圆等价）：
 
 $$
-\Psi_{12}(M):=\|M-p_1\|^2\lambda^2-\|M-p_2\|^2=0.
- \qquad (2.1)
+\Psi_{12}(M):=\|M-p_1\|^2\lambda^2-\|M-p_2\|^2=0. \qquad (2.1)
 $$
 
 每个独立钉点增加 **1 个** 多项式等式 $E\gets E+1$。由维数引理（引理 2.1），若 $E<\mathrm{dof}$，解空间**必为正维**（无穷多解）。
@@ -328,7 +414,7 @@ $$
 
 $$
 n_{\min}=\begin{cases}
-2, & m_{\mathrm{eff}}=0,\\[6pt]
+2, & m_{\mathrm{eff}}=0,\\
 3, & m_{\mathrm{eff}}\ge 1.
 \end{cases}
 $$
@@ -389,8 +475,7 @@ $$
 则
 
 $$
-\boxed{\,b=W-(W-a)\,r_2\,},\qquad p_{2y}=\frac H2,\quad r_2>0
- \qquad (1.4)
+\boxed{\,b=W-(W-a)\,r_2\,},\qquad p_{2y}=\frac H2,\quad r_2>0 \qquad (1.4)
 $$
 
 为解集的 **1 维族**；$r_2$（即 $\lambda$）为自由参数。
@@ -417,7 +502,14 @@ $$
 
 ### 双钉矩形
 
-若同时钉 $M=(W,H/2)$ 与底边中点 $(W/2,0)$（$|\Pi|=2,E=2=\mathrm{dof}$），联立与 $\Psi_{12}=0$ 及定理 5.6 / 扇形 v1 同型，**一般无非退化实解**。
+$W=2,H=1,a=2/5$ 时同时钉 $M=(2,1/2)$ 与 $(1,0)$，$|\Pi|=2$，$E=2=\mathrm{dof}$。在 $y=1/2$ 与 $y=0$ 上 (1.3) 分别为
+
+$$
+\frac{1-b}{r_2}=2-\frac25,\qquad
+\frac{\frac12-0}{r_2}=\sqrt{\Bigl(\frac12-\frac25\Bigr)^2+\Bigl(\frac12\Bigr)^2}.
+$$
+
+左式给出 $b=2-(8/5)r_2$；代入右式得关于 $r_2$ 的相容方程。一般无非退化实解，与 $\Sigma 9$-I 同型。
 
 ### 定理 4.3（有限解的必要条件）
 
@@ -432,10 +524,10 @@ $$
 ### §8.1 扇形设定
 
 $$
-\Omega=\{(ρ,\varphi):\ 0\le ρ\le R,\ |\varphi|\le\alpha\},\quad \alpha\in(0,\pi),\ R>0.
+\Omega=\{(\rho,\varphi):\ 0\le \rho\le R,\ |\varphi|\le\alpha\},\quad \alpha\in(0,\pi),\ R>0.
 $$
 
-边界：外弧 $\Gamma_{\mathrm{out}}$（$ρ=R$），径向边 $OA,OB$（$\varphi=\pm\alpha$）。角点 $A=(R\cos\alpha,R\sin\alpha)$。
+边界：外弧 $\Gamma_{\mathrm{out}}$（$\rho=R$），径向边 $OA,OB$（$\varphi=\pm\alpha$）。角点 $A=(R\cos\alpha,R\sin\alpha)$。
 
 已知 $p_1=(a,0)$，$0<a<R$，$r_1=1$。对称 Ansatz $p_2=(b,0)$，$r_2=\lambda$。
 
@@ -449,10 +541,10 @@ $$
 
 **引理 5.1**　(i) $A\in V_1$；(ii) 径向边无渗漏；(iii) $V_1,V_2$ 连通；(iv) $V_1\cup V_2=\Omega$。
 
-证明. (i) 令 $P(ρ)=(ρ\cos\alpha,ρ\sin\alpha)$，
+证明. (i) 令 $P(\rho)=(\rho\cos\alpha,\rho\sin\alpha)$，
 
 $$
-f(ρ):=\|P(ρ)-p_1\|^2-\lambda^{-2}\|P(ρ)-p_2\|^2.
+f(\rho):=\|P(\rho)-p_1\|^2-\lambda^{-2}\|P(\rho)-p_2\|^2.
 $$
 
 在 $\lambda=(R-b)/(R-a)$ 下，$P(R)=A$。记 $h=\|A-p_1\|=\sqrt{R^2+a^2-2aR\cos\alpha}$。要证 $f(R)<0$，即 $d(A,p_1)<d(A,p_2)/\lambda$。代入 $\lambda=(R-b)/(R-a)$，等价于
@@ -463,13 +555,13 @@ $$
 
 在 $a<b<R$、$\alpha\in(0,\pi)$ 下成立（路线 A 标准估计）。故 $A\in V_1$.
 
-(ii) $f(ρ)$ 为 $ρ$ 的二次函数。$f(0)=a^2-\lambda^{-2}b^2<0$（$b>a$），且 $f$ 在 $(0,R)$ 无零点（否则 $OA$ 上出现 $\Gamma_1$ 内交，与引理 5.2 矛盾）。故径向边无渗漏。
+(ii) $f(\rho)$ 为 $\rho$ 的二次函数。$f(0)=a^2-\lambda^{-2}b^2<0$（$b>a$），且 $f$ 在 $(0,R)$ 无零点（否则 $OA$ 上出现 $\Gamma_1$ 内交，与引理 5.2 矛盾）。故径向边无渗漏。
 
 (iii) $O=(0,0)$：$d(O,p_1)=a$，$d(O,p_2)/\lambda=b(R-a)/(R-b)>a$。$V_1$ 含 $O$ 与径向开射线，连通。
 
 (iv) 引理 2.3。证毕.
 
-**引理 5.2**　$\Gamma_1$ 与 $ρ=R$ 在 $M$ 内切。
+**引理 5.2**　$\Gamma_1$ 与 $\rho=R$ 在 $M$ 内切。
 
 证明. (1.3) 给出 $M\in\Gamma_1$；圆心在 $x$ 轴，与外圆在 $M$ 曲率匹配。证毕.
 
@@ -540,7 +632,23 @@ $$
 
 #### $\Sigma 9$-I 证明（v1 双钉无解）
 
-(I)(II) 联立化为 $p(b)=A_2b^2+A_1b+A_0=0$，$A_2=2aR(1-\cos\alpha)>0$。韦达定理给出两根 $b\in\{a,\ R^2/a\}$：$b=a$ 退化（$p_2=p_1$）；$b=R^2/a>R$。均不在 $(a,R)$。故 $\mathfrak{Sol}=\varnothing$.
+(I) $A\in\Gamma_1$，(II) $M\in\Gamma_1$ 给出 $\lambda=(R-b)/(R-a)$。代入 (I) 并平方整理，
+
+$$
+p(b):=A_2b^2+A_1b+A_0=0,
+$$
+
+其中
+
+$$
+\begin{aligned}
+A_2 &= 2aR(1-\cos\alpha),\\
+A_1 &= -2R\Big[(R-a)\|A-p_1\| + (R-a)^2\cos\alpha\Big],\\
+A_0 &= (R-a)^2 R^2 + \|A-p_1\|^2 R^2 - 2\|A-p_1\|^2 R(R-a).
+\end{aligned}
+$$
+
+$A_2>0$（$\alpha\neq0$）。$b=a$ 时 $\lambda=1$，(I) 恒成立，为退化根。韦达定理给出另一根 $b=R^2/a$；由 $a<R$ 得 $R^2/a>R$。均不在 $(a,R)$。故 $\mathfrak{Sol}=\varnothing$.
 
 #### $\Sigma 9$-II 证明
 
@@ -696,7 +804,7 @@ $$
 
 ```
 Ω, p₁, τ
-    → 乘性泰森 φᵢ=d/rᵢ；Viol=σ≠τ；路线 A：p₂=(b,y₀), r₂=λ；钉 M∈Γ₁₂ → (1.3)
+    → 乘性泰森 \varphiᵢ=d/rᵢ；Viol=σ≠τ；路线 A：p₂=(b,y₀), r₂=λ；钉 M∈Γ₁₂ → (1.3)
     → 逐边 χ₁₂；得 m_eff
 m_eff=0 ──→ n_min=2（定理 1.1）
 m_eff≥1 ──→ 秩3 (p₃,r₃)=(p₂,λ) → n_min=3（定理 1.1）
@@ -733,3 +841,31 @@ $$
 |------|---------|-----------------|-------|
 | 矩形 | $9/10$ | $3/20$ | $7/10$ |
 | L 形 | $11/20$ | $1/10$ | $9/10$ |
+
+---
+
+## 19　孔洞边界
+
+设 $\partial\Omega=\Gamma_{\mathrm{out}}\sqcup\bigsqcup_h\Gamma_{\mathrm{in}}^{(h)}$。孔缘 $\Gamma_{\mathrm{in}}^{(h)}$ 的归属由 $\tau$ 指定（例如归 $V_1$）。带孔扇形上孔缘点 $N$ 与外弧点 $M$ 同时钉 $\Gamma_1$ 时，与 $\Sigma 9$-I 同型过定：联立两式 $\lambda$ 一般不相容，应只钉 $M$，孔缘归属由 (A) 推出。
+
+---
+
+## 20　算例推论索引
+
+| 推论 | $\Omega$ | $m_{\mathrm{eff}}$ | $n_{\min}$ |
+|------|----------|-------------------|------------|
+| M.8 | 实心扇形 | 0 | 2 |
+| M.9 | 同心孔扇形 | 0 | 2 |
+| M.14 | 矩形顶底 | 2 | 3（秩3）/ 4（几何分离） |
+| M.15 | L 形边界 | 2 | 3 / 4 |
+| M.21 | 矩形/L 双水平边 | 2 | 3（秩3） |
+
+---
+
+## 21　算法 22.1（$\Sigma$ 内）
+
+1. 构造 $\mathcal E$，计算各边 $\chi_e$ 的极小值。
+2. 若 $\forall e,\min\chi_e\ge0$，输出 $n_{\min}=2$。
+3. 否则取 $(p_3,r_3)=(p_2,\lambda)$，输出 $n_{\min}=3$。
+4. 若拒绝秩 3，进入几何分离：下界 M.III，验证 M.IV 或终止于 M.V 障碍。
+5. 固定 $N$，按 $|\Pi|$ 与 $\mathrm{dof}$ 分类 $\mathfrak{Sol}$；加 $\eta$ 锁唯一。
