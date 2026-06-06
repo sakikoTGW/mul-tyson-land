@@ -258,13 +258,38 @@ p_3=(\xi,H-\varepsilon),\quad p_4=(\xi,\varepsilon),\quad r_3=r_4=r
 
 证明. (1) 引理 2.3。(2) (1.3)。(3) \(d(M_y,p_1)=d((0.25,2),(0.4,0.25))\)，\(d(M_y,p_2)/\lambda\) 于水平臂比较，标准参数下前者更小。(4) \(d(O,p_1)=a_1\) 最小。证毕.
 
-水平臂 \(A(V_2)/A(\mathrm{arm})\approx73\%\)。\(x>w\) 顶底边 \(m_{\mathrm{eff}}=2\)。同时钉 \(M_x,M_y\) 需 \(\lambda_x,\lambda_y\) 同时成立，一般 \(\lambda_x\neq\lambda_y\)，与单组 \((p_2,\lambda)\) 不相容。路线 C：\(\xi=11/20,\varepsilon=1/10,r=9/10\)。
+**命题 7.2**　标准参数下水平臂内 \(A(V_2)/A(\mathrm{arm})\approx73\%\)。
+
+**命题 7.3**　\(x>w\) 顶底边审计：\(m_{\mathrm{eff}}=2\)，\(x_Q\approx0.92\)，渗漏区间 \(\approx(0.55,1.95)\)。
+
+**定理 7.4**　同时钉 \(M_x=(R_x,w/2)\)、\(M_y=(w/2,R_y)\) 时，
+
+\[
+\lambda_x=\frac{R_x-b_1}{R_x-a_1},\qquad
+\lambda_y=\frac{R_y-b_2}{R_y-a_2}.
+\]
+
+路线 A 仅一组 \((p_2,\lambda)\)，故一般 \(\lambda_x\neq\lambda_y\)，\(\mathfrak{Sol}=\varnothing\) 或退化为 \(p_2=p_1\)。
+
+证明. 与 §5 定理 5.6 双钉过定同构。证毕.
+
+路线 C 证书：\(\xi=11/20,\varepsilon=1/10,r=9/10\)。
 
 ---
 
-## 8　半代数
+## 8　半代数与可判定性
 
-\(\Psi_{ij}=0\)、\(r_i>0\)、\(\chi_{12}\ge0\) 于 \(\partial\Omega\) 上为多项式等式/不等式，\(\mathfrak{Sol}\) 为半代数集。记 \(\mathfrak I=\dim_{\mathbb R}\mathfrak{Sol}^{\mathrm{mul}}\)。Gröbner 消元输出有限解或参数化族，与引理 2.1 一致。
+钉方程 \(\Psi_{ij}=0\)、\(r_i>0\)、边界条件 \(\chi_{12}\ge0\) 于 \(\partial\Omega\) 上均为多项式等式/不等式，故 \(\mathfrak{Sol}\) 为半代数集；\(\dim\mathfrak{Sol}\) 与分支数原则上可由 Tarski–Seidenberg 判定。
+
+记 \(\mathfrak I=\dim_{\mathbb R}\mathfrak{Sol}^{\mathrm{mul}}\)，则
+
+\[
+\mathfrak I=0,\ |\mathfrak{Sol}|=1\Rightarrow\text{唯一};\quad
+\mathfrak I\ge1\Rightarrow\text{无穷};\quad
+\mathfrak{Sol}=\varnothing\Rightarrow\text{无解}.
+\]
+
+`mul_tyson_solve.py` 对 \(N=2\) 作 Gröbner 消元，输出有限解或参数化族（如推论 4.1），与引理 2.1 计数一致。
 
 ---
 
@@ -280,15 +305,60 @@ p_3=(\xi,H-\varepsilon),\quad p_4=(\xi,\varepsilon),\quad r_3=r_4=r
 
 ---
 
-## 10　反问题分类
+## 10　与 Laguerre 幂图及 MWVD 的关系
 
-\(\mathfrak{Sol}=\varnothing\) 为无解；\(\dim\mathfrak{Sol}=0\) 且 \(|\mathfrak{Sol}\cap\mathfrak D^c|=1\) 为唯一；\(\dim=0\) 且 \(|\mathfrak{Sol}|>1\) 为有限多解；\(\dim\ge1\) 为无穷多解（参数化闭式）。解析解指方程组实根或 Gröbner 参数化族。
+乘性泰森 \(\varphi_i=d/r_i\) 的旗间分界线一般为阿波罗尼奥斯圆；Laguerre 幂图 \(\pi_i=\|x-p_i\|^2-r_i^2\) 的旗间分界线为直线。本文主链采用乘性泰森。经典 MWVD 中加权 Voronoi 单元为连通开集；本文反问题在 \(\mathcal B^\*\) 下额外要求边界无渗漏，从而出现 \(m_{\mathrm{eff}}\Rightarrow n_{\min}\) 与秩 3 构造，此非 MWVD 存在性理论本身的内容。
 
 ---
 
-## 11　矩形闭式与双钉
+## 11　已封口与未封口
 
-\((0,0),(2,0),(2,1),(0,1)\)，\(p_1=(2/5,1/2)\)，\(|\Pi|=1\)：\(p_{2x}=2-(8/5)r_2\)，\(p_{2y}=1/2\)。再加 \(\mathrm{Area}(V_2)=\eta\cdot2\) 得第二方程，与 (1.4) 联立。双钉 \(M=(2,1/2)\) 与 \((1,0)\)：\(E=2=\mathrm{dof}\)，联立
+| 已封口 | 未封口（主文稿） |
+|--------|------------------|
+| \(\Sigma 9\) 扇形三分 | 一般 \(\Omega\) 的 \(Z(\Omega)\) 统一指标 |
+| \(m_{\mathrm{eff}}\Rightarrow n_{\min}\in\{2,3\}\)（秩 3） | 弱 \(\mathcal B\) 下 \(n_{\min}\) |
+| dof vs \(|\Pi|\) 解空间维数 | \(m_{\mathrm{eff}}\ge2\) 几何分离完备性 |
+| 矩形/L 标准算例与路线 C 证书 | \(b_\eta\) 初等闭式 |
+
+---
+
+## 12　反问题四分类与解析解
+
+**定义 12.1**　输入 \((\Omega,p_1,\tau)\)，输出 \((p_2,\ldots,p_N,r_2,\ldots,r_N)\) 及解空间类型：
+
+| 类型 | 条件 |
+|------|------|
+| 无解 | \(\mathfrak{Sol}=\varnothing\) 或 Viol 无可行实解 |
+| 唯一 | \(\dim\mathfrak{Sol}=0\) 且 \(|\mathfrak{Sol}\cap\mathfrak D^c|=1\) |
+| 有限多解 | \(\dim\mathfrak{Sol}=0\)，\(|\mathfrak{Sol}|>1\)，全离散 |
+| 无穷多解 | \(\dim\mathfrak{Sol}\ge1\)，参数化闭式 |
+
+**定义 12.2（解析解）**　边界匹配方程组的实根，或 Gröbner 消元给出的参数化闭式；允许正维解族。数值迭代不进证明链。
+
+---
+
+## 13　引理 5.3 单零点公式
+
+\(\psi_b(x)=0\) 展开为 \((b-a)F_x(b)=0\)，其中 \(F_x(b)\) 为引理 5.3 中一次式。另一形式：
+
+\[
+b_\ast(x)=\frac{R^2 a-2R^2 x_1+2R x_1^2+2R x_2^2-a x_1^2-a x_2^2}
+{R^2-2Ra+2ax_1-x_1^2-x_2^2}.
+\]
+
+开区间 \((a,R)\) 内 \(\psi_b(x)=0\) 至多一个 \(b\)。旧稿「\(F'(b)>0\) 全局」或「\(\varphi_b\) 对 \(b\) 全局递减」均不成立；正确链条即引理 5.3–5.4。
+
+---
+
+## 14　矩形路线 A 闭式（W.12.6 型）
+
+顶点 \((0,0),(2,0),(2,1),(0,1)\)，\(p_1=(2/5,1/2)\)，钉 \(M=(2,1/2)\)，\(|\Pi|=1\)。由定理 1.2，
+
+\[
+p_{2x}=2-\frac{8}{5}r_2,\quad p_{2y}=\frac12,\quad r_2>0.
+\]
+
+此为 1 维族，与引理 2.1（\(E=1<2\)）一致。若再加 \(\mathrm{Area}(V_2)=\eta\cdot2\)，得第二方程，\(\eta\) 给定后一般锁 \(b\)（扇形型单调性，定理 1.3 同型）。若双钉 \(M\) 与 \((1,0)\)，\(E=2=\mathrm{dof}\)，联立
 
 \[
 \frac{1-b}{r_2}=2-\frac25,\qquad
@@ -299,27 +369,47 @@ p_3=(\xi,H-\varepsilon),\quad p_4=(\xi,\varepsilon),\quad r_3=r_4=r
 
 ---
 
-## 12　可判定性实验
+## 15　可判定性实验（凸域单钉）
 
-| 实例 | \(|\Pi|\) | 等式 | 剩余 dof |
-|------|----------|------|----------|
-| 矩形单钉 | 1 | 1 | 2 |
-| 矩形双钉 | 2 | 2 | 1 |
-| 凸五边形单钉 | 1 | 1 | 2 |
+| 实例 | \(|\Pi|\) | 未知数 | 等式 | 剩余 dof | 提示 |
+|------|----------|--------|------|----------|------|
+| 矩形 + 单钉 | 1 | 3 | 1 | 2 | 多解 |
+| 矩形 + 双钉 | 2 | 3 | 2 | 1 | 一般无解/退化 |
+| 凸五边形 + 单钉 | 1 | 3 | 1 | 2 | 多解 |
+
+（`decidability_convex_pin.py` 复现。）
 
 ---
 
-## 13　路线 C
+## 16　路线 C 守卫（\(m_{\mathrm{eff}}\ge2\)）
 
-\(m_{\mathrm{eff}}\ge2\) 时引入 \(p_3=(\xi,H-\varepsilon)\)，\(p_4=(\xi,\varepsilon)\)，\(r_3=r_4=r\)。M-安全：\(d(M,p_1)\le d(M,p_k)/r_k\)。水平渗漏边无 \(V_2\) 严格内点。
+顶、底（或 L 形 \(x>w\) 段）同时渗漏时，秩 3 共点不足以给出几何直观守卫，引入
+
+\[
+p_3=(\xi,H-\varepsilon),\quad p_4=(\xi,\varepsilon),\quad r_3=r_4=r.
+\]
+
+**M-安全**：\(d(M,p_1)\le d(M,p_k)/r_k\)。**渗漏边**：水平边上无 \(V_2\) 严格内点。
 
 | 形状 | \(\xi\) | \(\varepsilon\) | \(r\) |
 |------|---------|-----------------|-------|
 | 矩形 | \(9/10\) | \(3/20\) | \(7/10\) |
 | L 形 | \(11/20\) | \(1/10\) | \(9/10\) |
 
+`verify_guard_params.py` 复算；完整证明见主文稿。
+
 ---
 
 ## 附记
 
-`solve_land.py`、`sector_sigma9_verify.py`、`nmin_decision_audit.py`、`verify_guard_params.py` 供算例复验，非证明链。主文稿与示意图本地另行整理。
+本仓库 Python 脚本实现 Gröbner 消元、\(m_{\mathrm{eff}}\) 审计与解空间分类，供算例复验，不构成上述证明链。
+
+| 脚本 | 环节 |
+|------|------|
+| `solve_land.py` | \(\Omega,p_1,\tau\to n_{\min}\) + 解空间 |
+| `mul_tyson_solve.py` | \(\Psi_{ij}\) 消元 |
+| `sector_sigma9_verify.py` | \(\Sigma 9\)-I–V |
+| `nmin_decision_audit.py` | 定理 1.1 算例表 |
+| `verify_guard_params.py` | 路线 C 守卫参数 |
+
+主文稿（共形工具、一般 \(\Omega\)、路线 C 完整证明）与示意图本地另行整理，未纳入版本库。
