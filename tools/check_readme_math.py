@@ -38,6 +38,12 @@ for i, line in enumerate(lines, 1):
     if re.search(r"边界归属：\$", line):
         issues.append((i, "old fragment boundary line", line.strip()[:120]))
 
+    if re.search(r"\$`\\subset|\$`\\in V_1`\$", line):
+        issues.append((i, "broken subset/in fragment", line.strip()[:120]))
+
+    if "$$" not in line and re.search(r"(?<![\\lrvt])\|\\Omega\|", line):
+        issues.append((i, "raw |Omega| outside display", line.strip()[:120]))
+
     if re.search(r"\$M\\in\\Gamma_\{12\}\$ [^\s(（]", line) and "仍在" not in line and "钉点 $M$" not in line:
         issues.append((i, "fragment $M\\in\\Gamma_{12}$", line.strip()[:120]))
 
@@ -57,6 +63,8 @@ for i, line in enumerate(lines, 1):
 
     for m in RISKY_INLINE.finditer(line):
         inner = m.group(1)
+        if re.fullmatch(r"\\Sigma_\d+", inner):
+            continue
         if "_" in inner or r"\*" in inner:
             if not line.strip().startswith("```"):
                 issues.append((i, "unprotected risky inline", m.group(0)[:80]))

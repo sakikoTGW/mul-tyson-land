@@ -180,6 +180,8 @@ RISKY = re.compile(r"_|\\\*|\\mathfrak|\\mathrm|\\mathcal|\\varnothing|\\Rightar
 
 def protect_segment(m):
     inner = m.group(1)
+    if inner.startswith("`") and inner.endswith("`"):
+        return m.group(0)
     if RISKY.search(inner):
         return "$`" + inner + "`$"
     return "$" + inner + "$"
@@ -187,11 +189,26 @@ def protect_segment(m):
 def protect_non_display(chunk):
     return re.sub(r"\$([^$\n]+)\$", protect_segment, chunk)
 
+def fix_display_block(part: str) -> str:
+    inner = part[2:-2] if part.startswith("$$") and part.endswith("$$") else part
+    inner = re.sub(r"(?<![\\lrvt])\|(\\Omega)\|", r"\\lvert\1\\rvert", inner)
+    inner = re.sub(r"(?<![\\lrvt])\|(\\varphi)\|", r"\\lvert\1\\rvert", inner)
+    return "$$" + inner + "$$" if part.startswith("$$") else inner
+
+FRAGMENT_REPL = [
+    ("$`\\subset V_1`$", r"$\subset V_1$"),
+    ("邻域 $`\\in V_1`$", "邻域 $\\subset V_1$"),
+    ("$`\\subset V_1`$", r"$\subset V_1$"),
+]
+for old, new in FRAGMENT_REPL:
+    text = text.replace(old, new)
+
 parts = re.split(r"(\$\$.*?\$\$)", text, flags=re.DOTALL)
 for i, part in enumerate(parts):
     if part.startswith("$$"):
-        continue
-    parts[i] = protect_non_display(part)
+        parts[i] = fix_display_block(part)
+    else:
+        parts[i] = protect_non_display(part)
 text = "".join(parts)
 
 # table pipes inside math

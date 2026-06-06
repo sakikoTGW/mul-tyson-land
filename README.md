@@ -559,7 +559,7 @@ $$
 \frac{\frac12-0}{r_2}=\sqrt{\Bigl(\frac12-\frac25\Bigr)^2+\Bigl(\frac12\Bigr)^2}.
 $$
 
-左式给出 $`b=2-(8/5)r_2`$；代入右式得关于 $`r_2`$ 的相容方程。一般无非退化实解，与 $\Sigma 9$-I 同型。
+左式给出 $`b=2-(8/5)r_2`$；代入右式得关于 $`r_2`$ 的相容方程。一般无非退化实解，与 $\Sigma_9$-I 同型。
 
 ### 定理 4.3（有限解的必要条件）
 
@@ -569,23 +569,31 @@ $$
 
 ---
 
-## 10　扇形与 $\Sigma 9$
+## 10　扇形与 $\Sigma_9$
 
 ### §8.1 扇形设定
 
 $$
-\Omega=\{(\rho,\varphi):\ 0\le \rho\le R,\ |\varphi|\le\alpha\},\quad \alpha\in(0,\pi),\ R>0.
+\Omega=\left\{(\rho,\varphi):\ 0\le \rho\le R,\ \lvert\varphi\rvert\le\alpha\right\},\qquad \alpha\in(0,\pi),\ R>0.
 $$
 
-边界：外弧 $`\Gamma_{\mathrm{out}}`$（$\rho=R$），径向边 $OA,OB$（$`\varphi=\pm\alpha`$）。角点 $A=(R\cos\alpha,R\sin\alpha)$。
-
-已知 $`p_1=(a,0)`$，$0<a<R$，$`r_1=1`$。对称 Ansatz $`p_2=(b,0)`$，$`r_2=\lambda`$。
+边界：外弧 $`\Gamma_{\mathrm{out}}`$（$`\rho=R`$），径向边 $OA,OB$（$`\varphi=\pm\alpha`$）。角点
 
 $$
-V_2=\{x\in\Omega:\ d(x,p_2)/\lambda<d(x,p_1)\},\quad V_1=\Omega\setminus V_2.
+A=(R\cos\alpha,\ R\sin\alpha).
 $$
 
-路线 A：仅钉 $M=(R,0)$，$a<b<R$，$`\lambda=(R-b)/(R-a)`$。
+已知 $`p_1=(a,0)`$，$0<a<R$，$`r_1=1`$。对称 Ansatz $`p_2=(b,0)`$，$`r_2=\lambda`$。势力区
+
+$$
+V_2=\left\{x\in\Omega:\ \frac{d(x,p_2)}{\lambda}<d(x,p_1)\right\},\qquad V_1=\Omega\setminus V_2.
+$$
+
+路线 A：仅钉 $M=(R,0)$，$a<b<R$，
+
+$$
+\lambda=\frac{R-b}{R-a}.
+$$
 
 ### §8.2 路线 A 结构（引理 5.1–5.2）
 
@@ -618,7 +626,7 @@ $$
 | 编号 | 性质 |
 |------|------|
 | S1 | $`M\in\Gamma_1`$ |
-| S2 | $`A\in V_1`$；径向开射线 $`\subset V_1`$ |
+| S2 | $`A\in V_1`$；径向开射线 $\subset V_1$ |
 | S3 | $`\Gamma_1`$ 与外弧在 $M$ **内切** |
 | S4 | $`V_1,V_2`$ 连通 |
 | S5 | $`V_1\cup V_2=\Omega`$ |
@@ -631,7 +639,7 @@ $$
 在路线 A 的 1 维族上，加
 
 $$
-\mathrm{Area}(V_2)=\eta\,|\Omega|,\qquad \eta\in(0,1),
+\mathrm{Area}(V_2)=\eta\,\lvert\Omega\rvert,\qquad \eta\in(0,1),
 $$
 
 则存在唯一 $`b_\eta\in(a,R)`$。
@@ -674,19 +682,19 @@ $$
 
 介值定理与严格单调给出唯一 $`b_\eta`$。证毕.
 
-### §8.4 定理 $\Sigma 9$（扇形子故事穷举）
+### §8.4 定理 $\Sigma_9$（扇形子故事穷举）
 
 固定扇形、$`p_1`$、两旗乘性泰森。宽题输出**仅为**下表五行之一：
 
 | 编号 | 子故事 | 硬约束 | W 输出 |
 |------|--------|--------|--------|
-| $\Sigma 9$-I | v1 双钉 | $`A,M\in\Gamma_1`$ | **无解** |
-| $\Sigma 9$-II | 错故事 | $`M\in\Gamma_1`$ 且 $`A\in V_2`$ | **无解** |
-| $\Sigma 9$-III | 路线 A | 仅 $`M\in\Gamma_1`$，无渗漏 | **多解**（1 维族） |
-| $\Sigma 9$-IV | A + 份额 $`\eta`$ | 同 III + $`\mathrm{Area}(V_2)=\eta\lvert\Omega\rvert`$ | **唯一** |
-| $\Sigma 9$-V | A + 第二钉 $A$ | 同 III + $`A\in\Gamma_1`$ | **无解** |
+| $\Sigma_9$-I | v1 双钉 | $`A,M\in\Gamma_1`$ | **无解** |
+| $\Sigma_9$-II | 错故事 | $`M\in\Gamma_1`$ 且 $`A\in V_2`$ | **无解** |
+| $\Sigma_9$-III | 路线 A | 仅 $`M\in\Gamma_1`$，无渗漏 | **多解**（1 维族） |
+| $\Sigma_9$-IV | A + 份额 $`\eta`$ | 同 III + $`\mathrm{Area}(V_2)=\eta\lvert\Omega\rvert`$ | **唯一** |
+| $\Sigma_9$-V | A + 第二钉 $A$ | 同 III + $`A\in\Gamma_1`$ | **无解** |
 
-#### $\Sigma 9$-I 证明（v1 双钉无解）
+#### $\Sigma_9$-I 证明（v1 双钉无解）
 
 (I) $`A\in\Gamma_1`$，(II) $`M\in\Gamma_1`$ 给出 $`\lambda=(R-b)/(R-a)`$。代入 (I) 并平方整理，
 
@@ -706,23 +714,23 @@ $$
 
 $`A_2>0`$（$\alpha\neq0$）。$b=a$ 时 $`\lambda=1`$，(I) 恒成立，为退化根。韦达定理给出另一根 $b=R^2/a$；由 $a<R$ 得 $R^2/a>R$。均不在 $(a,R)$。故 $`\mathfrak{Sol}=\varnothing`$.
 
-#### $\Sigma 9$-II 证明
+#### $\Sigma_9$-II 证明
 
 引理 5.1(i)：$a<b<R$ 时 $f(R)<0$，即 $`A\in V_1`$，与 $`A\in V_2`$ 矛盾。
 
-#### $\Sigma 9$-III
+#### $\Sigma_9$-III
 
 任意 $b\in(a,R)$，$`\lambda(b)=(R-b)/(R-a)`$，引理 5.1–5.2 成立；$b$ 本质自由 $`\Rightarrow\dim=1`$.
 
-#### $\Sigma 9$-IV
+#### $\Sigma_9$-IV
 
 定理 1.3。
 
-#### $\Sigma 9$-V
+#### $\Sigma_9$-V
 
-等价于在 III 上再加 (I)，同 $\Sigma 9$-I。
+等价于在 III 上再加 (I)，同 $\Sigma_9$-I。
 
-定理 $\Sigma 9$　扇形两旗乘性泰森下，输出为 $\Sigma 9$-I 至 V 之一；唯一仅 IV，多解仅 III。证毕.
+定理 $\Sigma_9$　扇形两旗乘性泰森下，输出为 $\Sigma_9$-I 至 V 之一；唯一仅 IV，多解仅 III。证毕.
 
 ### §8.5 v1 / v2 / 路线 A 对照
 
@@ -760,7 +768,7 @@ $$
 
 标准参数 $`R_x=2,w=0.5,R_y=2`$，$`p_1=(0.4,0.25)`$，$`p_2=(0.6,0.25)`$，$`\lambda=7/8`$，只钉 $`M_x=(2,0.25)`$。
 
-**定理 7.1**　只钉 $`M_x`$ 时：(1) $`V_1\cup V_2=\Omega`$；(2) $`M_x\in\Gamma_1`$；(3) $`M_y=(w/2,R_y)\in V_1`$（标准参数）；(4) 内凹角 $O=(0,0)$ 邻域 $`\in V_1`$。
+**定理 7.1**　只钉 $`M_x`$ 时：(1) $`V_1\cup V_2=\Omega`$；(2) $`M_x\in\Gamma_1`$；(3) $`M_y=(w/2,R_y)\in V_1`$（标准参数）；(4) 内凹角 $O=(0,0)$ 邻域 $\subset V_1$。
 
 证明. (1) 引理 2.3。(2) (1.3)。(3) 数值：$`R_x=2,w=0.5,a_1=0.4,b_1=0.6`$ 时 $`d(M_y,p_1)<d(M_y,p_2)/\lambda`$ 于水平臂比较。(4) $`p_1`$ 最近。证毕.
 
@@ -780,7 +788,7 @@ $$
 
 路线 A 仅一组 $`(p_2,\lambda)`$，故一般 $`\lambda_x\neq\lambda_y`$，$`\mathfrak{Sol}=\varnothing`$ 或退化为 $`p_2=p_1`$。
 
-证明. 与 §8.4 $\Sigma 9$-I 双钉过定同构。证毕.
+证明. 与 §8.4 $\Sigma_9$-I 双钉过定同构。证毕.
 
 路线 C：$\xi=11/20,\varepsilon=1/10,r=9/10$（`verify_guard_params.py --shape L`）。
 
@@ -841,7 +849,7 @@ $$
 
 | 已证 | 未证 |
 |------|------|
-| $\Sigma 9$ 扇形三分 | 一般 $`\Omega`$ 的 $`Z(\Omega)`$ 统一指标 |
+| $\Sigma_9$ 扇形三分 | 一般 $`\Omega`$ 的 $`Z(\Omega)`$ 统一指标 |
 | $`m_{\mathrm{eff}}\Rightarrow n_{\min}\in\{2,3\}`$（秩 3） | 弱 $`\mathcal B`$ 下 $`n_{\min}`$ |
 | dof vs $`\lvert\Pi\rvert`$ 解空间维数 | $`m_{\mathrm{eff}}\ge2`$ 几何分离完备性 |
 | 矩形/L 标准算例与路线 C 证书 | $`b_\eta`$ 初等闭式 |
@@ -872,14 +880,14 @@ $$
 | 3 | $`m_{\mathrm{eff}}=0`$ | 定理 1.1：$`n_{\min}=2`$ |
 | 4 | $`m_{\mathrm{eff}}\ge1`$ | 定理 1.1：秩 3，$`n_{\min}=3`$ |
 | 5 | $`\lvert\Pi\rvert<\mathrm{dof}`$ | 引理 2.1：$`\dim\mathfrak{Sol}\ge1`$ |
-| 6 | $`\lvert\Pi\rvert=\mathrm{dof}`$ | 查相容；双钉常无解（$\Sigma 9$-I） |
-| 7 | 加 $`\eta`$ 或固定 $`r_2`$ | 定理 1.3 / $\Sigma 9$-IV：唯一 |
+| 6 | $`\lvert\Pi\rvert=\mathrm{dof}`$ | 查相容；双钉常无解（$\Sigma_9$-I） |
+| 7 | 加 $`\eta`$ 或固定 $`r_2`$ | 定理 1.3 / $\Sigma_9$-IV：唯一 |
 
 **情形对照**
 
 | 情形 | 代数/审计事实 | 输出 |
 |------|--------------|------|
-| v1 双钉 $A+M$ | 引理 5.5：$b\in\{a,R^2/a\}$ | $\Sigma 9$-I，无解 |
+| v1 双钉 $A+M$ | 引理 5.5：$`b\in\{a,R^2/a\}`$ | $\Sigma_9$-I，无解 |
 | 单钉 $M$ | $`E=1<\mathrm{dof}=2`$ | 定理 1.2，1 维族 |
 | 单钉 + $`\eta`$ | $`E=2=\mathrm{dof}`$，$A(b)$ 严格单调 | 定理 1.3，唯一 |
 | 渗漏边存在 | $`m_{\mathrm{eff}}\ge1`$，两旗不满足 $`\mathcal B^{\ast}`$ | 定理 1.1，秩 3，$`n_{\min}=3`$ |
@@ -906,7 +914,7 @@ $$
 
 ## 19　孔洞边界
 
-设 $`\partial\Omega=\Gamma_{\mathrm{out}}\sqcup\bigsqcup_h\Gamma_{\mathrm{in}}^{(h)}`$。孔缘 $`\Gamma_{\mathrm{in}}^{(h)}`$ 的归属由 $`\tau`$ 指定（例如归 $`V_1`$）。带孔扇形上孔缘点 $N$ 与外弧点 $M$ 同时钉 $`\Gamma_1`$ 时，与 $\Sigma 9$-I 同型过定：联立两式 $`\lambda`$ 一般不相容，应只钉 $M$，孔缘归属由 (A) 推出。
+设 $`\partial\Omega=\Gamma_{\mathrm{out}}\sqcup\bigsqcup_h\Gamma_{\mathrm{in}}^{(h)}`$。孔缘 $`\Gamma_{\mathrm{in}}^{(h)}`$ 的归属由 $`\tau`$ 指定（例如归 $`V_1`$）。带孔扇形上孔缘点 $N$ 与外弧点 $M$ 同时钉 $`\Gamma_1`$ 时，与 $\Sigma_9$-I 同型过定：联立两式 $`\lambda`$ 一般不相容，应只钉 $M$，孔缘归属由 (A) 推出。
 
 ---
 
