@@ -19,31 +19,59 @@ BANNED = [
     r"\\html",
 ]
 
+RISKY_INLINE = re.compile(r"(?<!\$`)\$([^$`]+)\$(?!`)")
+
 for i, line in enumerate(lines, 1):
     for pat in BANNED:
         if re.search(pat, line):
             issues.append((i, f"banned macro {pat}", line.strip()[:120]))
 
-    # \frac without braces: \frac H or \frac x
     if re.search(r"\\frac\s+[^${\\]", line):
         issues.append((i, "frac missing braces", line.strip()[:120]))
 
-    # table row: | inside $...$ (not \vert/\mid)
+    if re.search(r"\*\*\$[^$]+\$|\$\*\*", line):
+        issues.append((i, "bold wraps math", line.strip()[:120]))
+
+    if re.search(r"dof\$", line):
+        issues.append((i, "broken dof$", line.strip()[:120]))
+
+    if re.search(r"边界归属：\$", line):
+        issues.append((i, "old fragment boundary line", line.strip()[:120]))
+
+    if re.search(r"\$M\\in\\Gamma_\{12\}\$ [^\s(（]", line) and "仍在" not in line and "钉点 $M$" not in line:
+        issues.append((i, "fragment $M\\in\\Gamma_{12}$", line.strip()[:120]))
+
     if line.strip().startswith("|"):
         for m in re.finditer(r"\$([^$]+)\$", line):
             inner = m.group(1)
             if re.search(r"(?<!\\)\|", inner):
-                issues.append((i, "raw | inside $ in table cell", m.group(0)[:80]))
+                issues.append((i, "raw | inside $ in table", m.group(0)[:80]))
 
-# unbalanced $
+    # unprotected risky inline on label lines
+    if (
+        re.match(r"^\*\*定理 [0-9]", line)
+        and "的证明" not in line
+        and re.search(r"　\$[^$`]{10,}", line)
+    ):
+        issues.append((i, "theorem dense inline on label line", line.strip()[:120]))
+
+    for m in RISKY_INLINE.finditer(line):
+        inner = m.group(1)
+        if "_" in inner or r"\*" in inner:
+            if not line.strip().startswith("```"):
+                issues.append((i, "unprotected risky inline", m.group(0)[:80]))
+                break
+
 for i, line in enumerate(lines, 1):
     if line.count("$") % 2:
         issues.append((i, "unbalanced $", line.strip()[:120]))
 
 if issues:
     print(f"FOUND {len(issues)} issues:")
-    for row in issues:
+    for row in issues[:40]:
         print(f"  L{row[0]}: {row[1]} :: {row[2]}")
+    if len(issues) > 40:
+        print(f"  ... and {len(issues)-40} more")
     sys.exit(1)
 print("OK: no known GitHub math issues")
 sys.exit(0)
