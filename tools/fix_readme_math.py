@@ -20,6 +20,8 @@ REPL = [
     ("dof$=3$", r"$\mathrm{dof}=3$"),
     (r"\mathcal B^\*", r"\mathcal B^{\ast}"),
     (r"\arg\min_i", r"\arg\min_{i}"),
+    (r"\left\{", r"\\{"),
+    (r"\right\}", r"\\}"),
 ]
 for old, new in REPL:
     text = text.replace(old, new)

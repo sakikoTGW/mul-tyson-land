@@ -78,13 +78,13 @@ $$
 地皮是一块平面**闭域** $`\Omega\subset\mathbb R^2`$：
 
 - 外边界 $`\Gamma_{\mathrm{out}}`$ 可由折线围成任意多边形（矩形、L 形、扇形、海星形等均为**代入同一框架的算例**，不另立形状定理）；
-- 允许**孔洞**。边界分解为
+- 允许**孔洞**。记
 
-  $$
-  \partial\Omega=\Gamma_{\mathrm{out}}\sqcup\bigsqcup_h\Gamma_{\mathrm{in}}^{(h)}.
-  $$
+$$
+\partial\Omega=\Gamma_{\mathrm{out}}\sqcup\bigsqcup_h\Gamma_{\mathrm{in}}^{(h)}.
+$$
 
-  孔边界与外边界的归属均由 $`\tau`$ 指定；
+  孔边界与外边界的归属均由 $`\tau`$ 指定。
 - 假设边界分段 $C^1$，除有限个角点外法向可定义。
 
 ### §1.2 旗与性价比
@@ -449,7 +449,7 @@ $$
 | 1 | — | $1<2$ | **1 维族**（定理 1.2） |
 | 1 | 面积份额 $`\eta`$ | $2=2$ | **0 维**；扇形上唯一 $`b_\eta`$（定理 1.3） |
 | 1 | 固定 $`r_2`$ | $2=2$ | 有限（一般 0 或有限多点） |
-| 2 | — | $2=2$ 但相容性差 | **一般无解**；扇形 v1：$b\in\{a,R^2/a\}$ |
+| 2 | — | $2=2$ 但相容性差 | **一般无解**；扇形 v1：$`b\in\{a,R^2/a\}`$ |
 | 2 | 无共线（$`\mathrm{dof}=3`$） | $2<3$ | 仍 **1 维族** |
 
 固定 $N=2$ 共线：$`\lvert\Pi\rvert<\mathrm{dof}\Rightarrow\dim\mathfrak{Sol}\ge1`$；$`\lvert\Pi\rvert=\mathrm{dof}`$ 时查相容性；加独立第二方程（$`\eta`$ 等）可锁唯一。$`n_{\min}`$ 为最少旗数；$`\lvert\Pi\rvert`$ 为固定 $N$ 下的钉点个数。
@@ -574,7 +574,7 @@ $$
 ### §8.1 扇形设定
 
 $$
-\Omega=\left\{(\rho,\varphi):\ 0\le \rho\le R,\ \lvert\varphi\rvert\le\alpha\right\},\qquad \alpha\in(0,\pi),\ R>0.
+\Omega=\{(\rho,\varphi):\ 0\le \rho\le R,\ \lvert\varphi\rvert\le\alpha\},\qquad \alpha\in(0,\pi),\ R>0.
 $$
 
 边界：外弧 $`\Gamma_{\mathrm{out}}`$（$`\rho=R`$），径向边 $OA,OB$（$`\varphi=\pm\alpha`$）。角点
@@ -586,7 +586,7 @@ $$
 已知 $`p_1=(a,0)`$，$0<a<R$，$`r_1=1`$。对称 Ansatz $`p_2=(b,0)`$，$`r_2=\lambda`$。势力区
 
 $$
-V_2=\left\{x\in\Omega:\ \frac{d(x,p_2)}{\lambda}<d(x,p_1)\right\},\qquad V_1=\Omega\setminus V_2.
+V_2=\{x\in\Omega:\ \tfrac{d(x,p_2)}{\lambda}<d(x,p_1)\},\qquad V_1=\Omega\setminus V_2.
 $$
 
 路线 A：仅钉 $M=(R,0)$，$a<b<R$，
@@ -611,7 +611,7 @@ $$
 h(R-a)<(R-b)\sqrt{R^2+b^2-2bR\cos\alpha}.
 $$
 
-在 $a<b<R$、$\alpha\in(0,\pi)$ 下成立（路线 A 标准估计）。故 $`A\in V_1`$.
+在 $`a<b<R`$、$`\alpha\in(0,\pi)`$ 下成立（路线 A 标准估计）。故 $`A\in V_1`$。
 
 (ii) $f(\rho)$ 为 $\rho$ 的二次函数。$`f(0)=a^2-\lambda^{-2}b^2<0`$（$b>a$），且 $f$ 在 $(0,R)$ 无零点（否则 $OA$ 上出现 $`\Gamma_1`$ 内交，与引理 5.2 矛盾）。故径向边无渗漏。
 
@@ -672,7 +672,7 @@ $$
 
 **引理 5.4**　$A(b)$ 在 $(a,R)$ 连续、严格减；$`\lim_{b\uparrow R}A(b)=0`$；$`A_{\sup}:=\lim_{b\downarrow a}A(b)>0`$。
 
-证明. 连续性由特征函数与控制收敛定理。$b\uparrow R$ 时 $`\lambda\to0^+`$，$`V_2\cap\Omega\to\{p_2\}`$，$A\to0$。$b\downarrow a$ 时月牙膨胀，$`A_{\sup}>0`$。单调性由引理 5.3。证毕.
+证明. 连续性由特征函数与控制收敛定理。当 $`b\uparrow R`$ 时 $`\lambda\to 0^+`$，$`V_2\cap\Omega\to\lbrace p_2\rbrace`$，$`A\to 0`$；当 $`b\downarrow a`$ 时月牙膨胀，$`A_{\sup}>0`$。单调性由引理 5.3。证毕.
 
 **定理 1.3 的证明**　$A$ 值域 $`(0,A_{\sup})`$，连续严格减。对
 
@@ -758,7 +758,13 @@ $$
 p_3=(\xi,H-\varepsilon),\quad p_4=(\xi,\varepsilon),\quad r_3=r_4=r
 $$
 
-压制顶底渗漏。矩形路线 C 证书：$\xi=9/10,\varepsilon=3/20,r=7/10$（`verify_guard_params.py`）。
+压制顶底渗漏。矩形路线 C 证书：
+
+$$
+\xi=\tfrac{9}{10},\quad \varepsilon=\tfrac{3}{20},\quad r=\tfrac{7}{10}.
+$$
+
+（`verify_guard_params.py`）
 
 ### §9.2 L 形
 
@@ -790,7 +796,13 @@ $$
 
 证明. 与 §8.4 $\Sigma_9$-I 双钉过定同构。证毕.
 
-路线 C：$\xi=11/20,\varepsilon=1/10,r=9/10$（`verify_guard_params.py --shape L`）。
+路线 C 证书：
+
+$$
+\xi=\tfrac{11}{20},\quad \varepsilon=\tfrac{1}{10},\quad r=\tfrac{9}{10}.
+$$
+
+（`verify_guard_params.py --shape L`）
 
 ---
 
