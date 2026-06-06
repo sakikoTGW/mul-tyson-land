@@ -22,13 +22,13 @@ $$
 
 **反问题**：已知 $\Omega,p_1,\tau$，求 $(p_2,\ldots,p_N,r_2,\ldots,r_N)$，并判定 $\mathfrak{Sol}$ 为无解、唯一、有限或无穷；无穷时给出参数化闭式。
 
-在路线 A（(1.2)(1.3)）与强规范 $\mathcal B^\*$（渗漏边集 $\mathcal E=\varnothing$，见 §4）下，记 $m_{\mathrm{eff}}=|\mathcal E|$，有
+在路线 A（(1.2)(1.3)）与强规范 $\mathcal B^\*$（渗漏边集 $\mathcal E=\varnothing$，见 §4）下，记 $m_{\mathrm{eff}}=\lvert\mathcal E\rvert$，有
 
 **定理 1.1**　$m_{\mathrm{eff}}=0\Rightarrow n_{\min}=2$；$m_{\mathrm{eff}}\ge1\Rightarrow n_{\min}=3$，且可取 $(p_3,r_3)=(p_2,\lambda)$。
 
 **定理 1.2**　$\Omega=[0,W]\times[0,H]$，$p_1=(a,H/2)$，$M=(W,H/2)\in\Gamma_{12}$ 时，$b=W-(W-a)r_2$（$r_2>0$）为 $\mathfrak{Sol}$ 的一条 1 维族。
 
-**定理 1.3**　扇形 $\Omega(R,\alpha)$、路线 A 的 1 维族上，若 $\mathrm{Area}(V_2)=\eta|\Omega|$（$\eta\in(0,1)$），则存在唯一 $b_\eta\in(a,R)$。
+**定理 1.3**　扇形 $\Omega(R,\alpha)$、路线 A 的 1 维族上，若 $\mathrm{Area}(V_2)=\eta\lvert\Omega\rvert$（$\eta\in(0,1)$），则存在唯一 $b_\eta\in(a,R)$。
 
 ---
 
@@ -137,8 +137,8 @@ $$
 | 分类 | 数学含义 |
 |------|----------|
 | **无解** | $\mathfrak{Sol}=\varnothing$ 或无可行实解满足 Viol |
-| **唯一** | $\dim\mathfrak{Sol}=0$ 且 $|\mathfrak{Sol}\cap\mathfrak D^c|=1$ |
-| **有限多解** | $\dim\mathfrak{Sol}=0$ 且 $|\mathfrak{Sol}|>1$，全离散 |
+| **唯一** | $\dim\mathfrak{Sol}=0$ 且 $\lvert\mathfrak{Sol}\cap\mathfrak D^c\rvert=1$ |
+| **有限多解** | $\dim\mathfrak{Sol}=0$ 且 $\lvert\mathfrak{Sol}\rvert>1$，全离散 |
 | **无穷多解** | $\dim\mathfrak{Sol}\ge 1$，给出参数化闭式与自由参 |
 
 其中 $\mathfrak D$ 为退化簇（$p_i=p_j$、$r_i=0$ 等）。
@@ -241,7 +241,7 @@ $m_{\mathrm{eff}}\ge 1$ 时第三面旗可取秩 3 配置 $(p_3,r_3)=(p_2,\lambd
 |------|------|
 | H1 | $\Omega$ 有界，$\partial\Omega=\bigcup_i\Gamma_i$，每段局部 $f_i(x,y)=0$，$\nabla f_i\neq0$ |
 | H2 | $\mathcal E\subset\{\Gamma_i\}$ 有限；每 $e\in\mathcal E$ 有 $C^1$ 参数化 $\gamma_e$ |
-| H3 | 路线 A，$F(x,y)=\dfrac{d(p_2)}{\lambda}-d(p_1)$ |
+| H3 | 路线 A，$F(x,y)=\frac{d(p_2)}{\lambda}-d(p_1)$ |
 | H4 | 单组 $\mathcal S$；拼接时 G2 |
 
 ### 4.5　方程系统 $\mathfrak E^{\mathrm{mul}}$
@@ -266,8 +266,10 @@ $$
 
 **(D) 可行性**　$r_i>0$；G3 钉点 $\Pi$；非退化 $\mathcal U\notin\mathfrak D$。
 
+记 $\mathcal U$ 满足 $\mathfrak E^{\mathrm{mul}}$ 且 $\mathrm{Viol}=\varnothing$、$\bigcup_i V_i=D$，则
+
 $$
-\mathfrak{Sol}^{\mathrm{mul}}(f_D,\gamma,p_1,\tau;\mathfrak g):=\{\mathcal U:\ \mathcal U\text{ 满足 }\mathfrak E^{\mathrm{mul}},\ \mathrm{Viol}=\varnothing,\ \bigcup_i V_i=D\}.
+\mathfrak{Sol}^{\mathrm{mul}}(f_D,\gamma,p_1,\tau;\mathfrak g):=\{\mathcal U\}.
 $$
 
 ### 4.6　引理 M★.0
@@ -278,7 +280,7 @@ $$
 
 ### 4.7　定理 M★ 的证明
 
-记 $m_{\mathrm{eff}}=|\{e\in\mathcal E:\ \mathcal S_2(e)\neq\varnothing\}|$。
+记 $m_{\mathrm{eff}}=\lvert\{e\in\mathcal E:\ \mathcal S_2(e)\neq\varnothing\}\rvert$。
 
 若 $m_{\mathrm{eff}}=0$，则 $\forall e\in\mathcal E$，$\min\chi_e\ge0$，由 M.I 得 $n_{\min}=2$。
 
@@ -396,7 +398,7 @@ $$
 
 ### §5.2 定点个数速查表（$N=2$，共线，$\mathrm{dof}=2$）
 
-| $|\Pi|$ | 额外约束 | $E$ vs dof | 解的形态 |
+| $\lvert\Pi\rvert$ | 额外约束 | $E$ vs dof | 解的形态 |
 |----------|----------|--------------|----------|
 | 0 | — | $0<2$ | **2 维族** |
 | 1 | — | $1<2$ | **1 维族**（定理 1.2） |
@@ -405,7 +407,7 @@ $$
 | 2 | — | $2=2$ 但相容性差 | **一般无解**；扇形 v1：$b\in\{a,R^2/a\}$ |
 | 2 | 无共线（dof$=3$） | $2<3$ | 仍 **1 维族** |
 
-固定 $N=2$ 共线：$|\Pi|<\mathrm{dof}\Rightarrow\dim\mathfrak{Sol}\ge1$；$|\Pi|=\mathrm{dof}$ 时查相容性；加独立第二方程（$\eta$ 等）可锁唯一。$n_{\min}$ 为最少旗数；$|\Pi|$ 为固定 $N$ 下的钉点个数。
+固定 $N=2$ 共线：$\lvert\Pi\rvert<\mathrm{dof}\Rightarrow\dim\mathfrak{Sol}\ge1$；$\lvert\Pi\rvert=\mathrm{dof}$ 时查相容性；加独立第二方程（$\eta$ 等）可锁唯一。$n_{\min}$ 为最少旗数；$\lvert\Pi\rvert$ 为固定 $N$ 下的钉点个数。
 
 ---
 
@@ -470,15 +472,15 @@ $$
 矩形 $\Omega=[0,W]\times[0,H]$，
 
 $$
-p_1=\Bigl(a,\frac H2\Bigr),\quad
-p_2=\Bigl(b,\frac H2\Bigr),\quad
-M=\Bigl(W,\frac H2\Bigr)\in\Gamma_{12}.
+p_1=\Bigl(a,\frac{H}{2}\Bigr),\quad
+p_2=\Bigl(b,\frac{H}{2}\Bigr),\quad
+M=\Bigl(W,\frac{H}{2}\Bigr)\in\Gamma_{12}.
 $$
 
 则
 
 $$
-\boxed{\,b=W-(W-a)\,r_2\,},\qquad p_{2y}=\frac H2,\quad r_2>0 \qquad (1.4)
+\boxed{\,b=W-(W-a)\,r_2\,},\qquad p_{2y}=\frac{H}{2},\quad r_2>0 \qquad (1.4)
 $$
 
 为解集的 **1 维族**；$r_2$（即 $\lambda$）为自由参数。
@@ -505,7 +507,7 @@ $$
 
 ### 双钉矩形
 
-$W=2,H=1,a=2/5$ 时同时钉 $M=(2,1/2)$ 与 $(1,0)$，$|\Pi|=2$，$E=2=\mathrm{dof}$。在 $y=1/2$ 与 $y=0$ 上 (1.3) 分别为
+$W=2,H=1,a=2/5$ 时同时钉 $M=(2,1/2)$ 与 $(1,0)$，$\lvert\Pi\rvert=2$，$E=2=\mathrm{dof}$。在 $y=1/2$ 与 $y=0$ 上 (1.3) 分别为
 
 $$
 \frac{1-b}{r_2}=2-\frac25,\qquad
@@ -619,7 +621,7 @@ $$
 
 证明. 连续性由特征函数与控制收敛定理。$b\uparrow R$ 时 $\lambda\to0^+$，$V_2\cap\Omega\to\{p_2\}$，$A\to0$。$b\downarrow a$ 时月牙膨胀，$A_{\sup}>0$。单调性由引理 5.3。证毕.
 
-**定理 1.3 的证明**　$A$ 值域 $(0,A_{\sup})$，连续严格减。对 $\eta|\Omega|\in(0,A_{\sup})$，介值定理与严格单调给出唯一 $b_\eta$. 证毕.
+**定理 1.3 的证明**　$A$ 值域 $(0,A_{\sup})$，连续严格减。对 $\eta\lvert\Omega\rvert\in(0,A_{\sup})$，介值定理与严格单调给出唯一 $b_\eta$. 证毕.
 
 ### §8.4 定理 $\Sigma 9$（扇形子故事穷举）
 
@@ -630,7 +632,7 @@ $$
 | **$\Sigma 9$-I** | v1 双钉 | $A,M\in\Gamma_1$ | **无解** |
 | **$\Sigma 9$-II** | 错故事 | $M\in\Gamma_1$ 且 $A\in V_2$ | **无解** |
 | **$\Sigma 9$-III** | 路线 A | 仅 $M\in\Gamma_1$，无渗漏 | **多解**（1 维族） |
-| **$\Sigma 9$-IV** | A + 份额 $\eta$ | 同 III + $\mathrm{Area}(V_2)=\eta|\Omega|$ | **唯一** |
+| **$\Sigma 9$-IV** | A + 份额 $\eta$ | 同 III + $\mathrm{Area}(V_2)=\eta\lvert\Omega\rvert$ | **唯一** |
 | **$\Sigma 9$-V** | A + 第二钉 $A$ | 同 III + $A\in\Gamma_1$ | **无解** |
 
 #### $\Sigma 9$-I 证明（v1 双钉无解）
@@ -739,17 +741,18 @@ $$
 
 记 $\mathfrak I=\dim_{\mathbb R}\mathfrak{Sol}^{\mathrm{mul}}$，则
 
-$$
-\mathfrak I=0,\ |\mathfrak{Sol}|=1\Rightarrow\text{唯一};\quad
-\mathfrak I\ge1\Rightarrow\text{无穷};\quad
-\mathfrak{Sol}=\varnothing\Rightarrow\text{无解}.
-$$
+| $\mathfrak I$ | $\lvert\mathfrak{Sol}\rvert$ | 分类 |
+|-------------|------------------|------|
+| — | 0 | 无解 |
+| 0 | 1 | 唯一 |
+| 0 | $>1$ | 有限多解 |
+| $\ge1$ | — | 无穷多解 |
 
 `mul_tyson_solve.py` 对 $N=2$ 作 Gröbner 消元，输出有限解或参数化族（如定理 1.2），与引理 2.1 计数一致。
 
 ### 可判定性实验（凸域单钉）
 
-| 实例 | $|\Pi|$ | 未知数 | 等式 | 剩余 dof | 提示 |
+| 实例 | $\lvert\Pi\rvert$ | 未知数 | 等式 | 剩余 dof | 提示 |
 |------|----------|--------|------|----------|------|
 | 矩形 + 单钉 | 1 | 3 | 1 | 2 | 多解 |
 | 矩形 + 双钉 | 2 | 3 | 2 | 1 | 一般无解/退化 |
@@ -789,7 +792,7 @@ $$
 |------|------|
 | $\Sigma 9$ 扇形三分 | 一般 $\Omega$ 的 $Z(\Omega)$ 统一指标 |
 | $m_{\mathrm{eff}}\Rightarrow n_{\min}\in\{2,3\}$（秩 3） | 弱 $\mathcal B$ 下 $n_{\min}$ |
-| dof vs $|\Pi|$ 解空间维数 | $m_{\mathrm{eff}}\ge2$ 几何分离完备性 |
+| dof vs $\lvert\Pi\rvert$ 解空间维数 | $m_{\mathrm{eff}}\ge2$ 几何分离完备性 |
 | 矩形/L 标准算例与路线 C 证书 | $b_\eta$ 初等闭式 |
 
 ---
@@ -801,8 +804,8 @@ $$
 | 类型 | 条件 |
 |------|------|
 | 无解 | $\mathfrak{Sol}=\varnothing$ 或 Viol 无可行实解 |
-| 唯一 | $\dim\mathfrak{Sol}=0$ 且 $|\mathfrak{Sol}\cap\mathfrak D^c|=1$ |
-| 有限多解 | $\dim\mathfrak{Sol}=0$，$|\mathfrak{Sol}|>1$，全离散 |
+| 唯一 | $\dim\mathfrak{Sol}=0$ 且 $\lvert\mathfrak{Sol}\cap\mathfrak D^c\rvert=1$ |
+| 有限多解 | $\dim\mathfrak{Sol}=0$，$\lvert\mathfrak{Sol}\rvert>1$，全离散 |
 | 无穷多解 | $\dim\mathfrak{Sol}\ge1$，参数化闭式 |
 
 **定义 14.2（解析解）**　边界匹配方程组的实根，或 Gröbner 消元给出的参数化闭式；允许正维解族。数值迭代不进证明链。
@@ -814,11 +817,11 @@ $$
 | 步骤 | 条件 | 结论 |
 |------|------|------|
 | 1 | 给定 $\Omega,p_1,\tau$；路线 A | 未知 $(b,\lambda)$；钉 $M\in\Gamma_{12}$ 得 (1.3) |
-| 2 | 逐边 $\chi_{12}$ | $m_{\mathrm{eff}}=|\mathcal E|$ |
+| 2 | 逐边 $\chi_{12}$ | $m_{\mathrm{eff}}=\lvert\mathcal E\rvert$ |
 | 3 | $m_{\mathrm{eff}}=0$ | 定理 1.1：$n_{\min}=2$ |
 | 4 | $m_{\mathrm{eff}}\ge1$ | 定理 1.1：秩 3，$n_{\min}=3$ |
-| 5 | $|\Pi|<\mathrm{dof}$ | 引理 2.1：$\dim\mathfrak{Sol}\ge1$ |
-| 6 | $|\Pi|=\mathrm{dof}$ | 查相容；双钉常无解（$\Sigma 9$-I） |
+| 5 | $\lvert\Pi\rvert<\mathrm{dof}$ | 引理 2.1：$\dim\mathfrak{Sol}\ge1$ |
+| 6 | $\lvert\Pi\rvert=\mathrm{dof}$ | 查相容；双钉常无解（$\Sigma 9$-I） |
 | 7 | 加 $\eta$ 或固定 $r_2$ | 定理 1.3 / $\Sigma 9$-IV：唯一 |
 
 **情形对照**
@@ -874,4 +877,4 @@ $$
 2. 若 $\forall e,\min\chi_e\ge0$，输出 $n_{\min}=2$。
 3. 否则取 $(p_3,r_3)=(p_2,\lambda)$，输出 $n_{\min}=3$。
 4. 若拒绝秩 3，进入几何分离：下界 M.III，验证 M.IV 或终止于 M.V 障碍。
-5. 固定 $N$，按 $|\Pi|$ 与 $\mathrm{dof}$ 分类 $\mathfrak{Sol}$；加 $\eta$ 锁唯一。
+5. 固定 $N$，按 $\lvert\Pi\rvert$ 与 $\mathrm{dof}$ 分类 $\mathfrak{Sol}$；加 $\eta$ 锁唯一。
