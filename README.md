@@ -1,44 +1,214 @@
 # 乘性泰森地皮划分
 
-## 问题
+## 0. 对象
 
-给定平面区域 \(\Omega\)、第一面旗位置 \(p_1\)、边界归属 \(\tau\)（每条边归哪面旗），反求其余旗位与半径，并判定解空间：
+地皮是一块平面闭域 \(\Omega\subset\mathbb R^2\)：边界可由折线围成任意多边形，亦可含孔洞（内边界）。在平地上选定一点插第一面旗 \(p_1\)，其管辖半径取 \(r_1=1\)。
 
-- 无解
-- 有限多解（全列）
-- 无穷多解（参数化闭式）
+尚需插入若干面旗。第 \(i\) 面旗有位置 \(p_i\in\mathbb R^2\) 与管辖半径 \(r_i>0\)。对 \(x\in\Omega\)，定义到第 \(i\) 面旗的**性价比**
 
-同时按定理 M★ 自动给出 \(n_{\min}\)（\(m_{\mathrm{eff}}=0\Rightarrow 2\)，\(m_{\mathrm{eff}}\ge 1\Rightarrow 3\) 秩3路线）。
+\[
+\varphi_i(x):=\frac{\|x-p_i\|}{r_i}.
+\]
 
-## 本仓库内容
+\(x\) 归性价比最小者管辖；等值点集 \(\varphi_i=\varphi_j\) 为势力分界线。在乘性泰森模型中，两旗性价比相等时，分界线为圆弧（阿波罗尼奥斯圆）。
 
-数值复现与审计脚本，对应扇形 Σ9 分类、宽题 W 封口（§W.12）、路线 C 守卫参数等。**非证明链**；主文稿另行整理。
+**边界故事** \(\tau\)：对 \(\partial\Omega\) 的每条边 \(e\)，指定 \(e\) 上（除分界点外）每点应归哪面旗。程序性可行性要求：
 
-## 依赖
+1. **覆盖** \(V_1\cup\cdots\cup V_N=\Omega\)，无未归属内点；
+2. **边界一致** 在 \(\partial\Omega\) 上，实际归属与 \(\tau\) 一致（分界点除外）。
+
+---
+
+## 1. 反问题
+
+**输入**：\(\Omega\)，第一面旗 \(p_1\)（\(r_1=1\) 已归一），边界故事 \(\tau\)。
+
+**输出**：其余旗的 \((p_i,r_i)\)，并判定解空间：
+
+| 分类 | 含义 |
+|------|------|
+| 无解 | \(\mathfrak{Sol}=\varnothing\) |
+| 唯一 | 有限个可行解且恰为 1 个 |
+| 有限多解 | 可行解有限且 \(>1\)，全列 |
+| 无穷多解 | 正维解族，给出参数化闭式 |
+
+---
+
+## 2. 设定：路线 A，\(N=2\)
+
+取两旗、共线 Ansatz：
+
+\[
+p_1=(a,y_0),\quad r_1=1;\qquad
+p_2=(b,y_0),\quad r_2=\lambda>0.
+\]
+
+边界点 \(M\in\partial\Omega\) **钉**在两面旗分界线上（记 \(M\in\Gamma_{12}\)）：
+
+\[
+\frac{d(M,p_2)}{\lambda}=\frac{d(M,p_1)}{1}.
+\tag{†}
+\]
+
+式 (†) 将 \((b,\lambda)\) 与几何位置联立；单独不足以唯一确定解，需结合 \(\tau\) 与额外约束。
+
+---
+
+## 3. 渗漏与 \(m_{\mathrm{eff}}\)
+
+对每条边 \(e\subset\partial\Omega\)，在 \(e\) 上采样比较 \(\varphi_1,\varphi_2\)。若存在开子段使旗 2 **严格**占优（\(\varphi_2<\varphi_1\)），而 \(\tau(e)\) 要求该边归旗 1，则称 \(e\) **渗漏**。
+
+记渗漏边集为 \(\mathcal E\)，
+
+\[
+m_{\mathrm{eff}}:=|\mathcal E|.
+\]
+
+\(m_{\mathrm{eff}}\) 不依赖形状名称；矩形、L 形、扇形均为向同一框架代入边界数据。
+
+**强规范 \(\mathcal B^\*\)**：要求 \(\mathcal E=\varnothing\)（无渗漏边）。当 \(m_{\mathrm{eff}}\ge 1\) 时，两旗在强规范下一般不可行，需增旗。
+
+---
+
+## 4. 定理 1（最少旗数，秩 3）
+
+在路线 A、强规范 \(\mathcal B^\*\) 下，
+
+\[
+n_{\min}=\begin{cases}
+2, & m_{\mathrm{eff}}=0,\\[4pt]
+3, & m_{\mathrm{eff}}\ge 1.
+\end{cases}
+\]
+
+当 \(m_{\mathrm{eff}}\ge 1\) 时，第三面旗取**秩 3 配置**
+
+\[
+(p_3,r_3)=(p_2,\lambda),
+\]
+
+即与 \(p_2\) 共点、同半径。
+
+### 证明
+
+**下界**：\(m_{\mathrm{eff}}\ge 1\) 时，至少一条边在 \(\tau\) 下要求归旗 1，而两旗模型下该边存在旗 2 严格占优段，故两面旗不能同时满足 \(\mathcal B^\*\)，\(n_{\min}\ge 3\)。
+
+**上界（秩 3 构造）**：令 \((p_3,r_3)=(p_2,\lambda)\)。对任意 \(X\in\Omega\)，\(X\) 为旗 2 **严格**内点需同时满足
+
+\[
+\frac{d(X,p_2)}{\lambda}<\frac{d(X,p_1)}{1},
+\qquad
+\frac{d(X,p_2)}{\lambda}<\frac{d(X,p_3)}{\lambda}.
+\]
+
+由 \(p_3=p_2\)、\(r_3=\lambda\)，第二式化为 \(d(X,p_2)<d(X,p_2)\)，永不严成立，故全局无旗 2 严格内点；渗漏边上的旗 2 开段被消去，\(\mathcal B^\*\) 成立。钉点 \(M\in\Gamma_{12}\) 仍满足 (†)。故 \(n=3\) 可行，结合下界得 \(n_{\min}=3\)。
+
+**\(m_{\mathrm{eff}}=0\)**：无渗漏边时两旗已满足强规范，\(n_{\min}=2\)。∎
+
+### 动机（为何共点第三旗）
+
+增旗的朴素需求是：在渗漏边 \(e\) 上引入能压低 \(\varphi_2\) 的站点。秩 3 方案不在新点处分离势力，而在**同点**以**同权重**复制 \(p_2\)，使「旗 2 严格内点」这一谓词对第三旗恒假，从而消去边界上与 \(\tau\) 冲突的旗 2 开段，且不破坏 \(M\in\Gamma_{12}\)。这是代数秩下降（两列比较退化）与边界规范相容的最小增旗方式。
+
+---
+
+## 5. 定理 2（单钉不唯一）
+
+矩形 \(\Omega=[0,W]\times[0,H]\)，
+
+\[
+p_1=\Bigl(a,\frac H2\Bigr),\quad
+p_2=\Bigl(b,\frac H2\Bigr),\quad
+M=\Bigl(W,\frac H2\Bigr)\in\Gamma_{12}.
+\]
+
+则
+
+\[
+b=W-\frac{W-a}{r_2}\,\lambda,\qquad \lambda=r_2,
+\]
+
+即
+
+\[
+\boxed{\,b=W-(W-a)\,r_2\,}
+\]
+
+为解集的一条 **1 维族**；\(r_2>0\) 为自由参数。
+
+### 证明
+
+在 \(y=H/2\) 上， (†) 化为
+
+\[
+\frac{W-b}{r_2}=W-a
+\quad\Longrightarrow\quad
+b=W-(W-a)\,r_2.
+\]
+
+方程 1 个，未知 \((b,r_2)\) 两个，故 \(\dim\mathfrak{Sol}\ge 1\)。对任意 \(r_2>0\) 取 \(b\) 如上， (†) 成立；其余 \(\tau\)/Viol 条件在标准矩形钉点设置下沿该族成立（见 `solve_land.py` 参数化输出）。∎
+
+### 与自由度的关系
+
+\(N=2\)、共线 Ansatz 下，未知 \((b,\lambda)\) 的**本征自由度**为 2。钉 1 点提供 1 个等式，解空间从 2 维降为 **1 维族**——与下表「1 钉 \(\Rightarrow\) 1 维族」一致。
+
+---
+
+## 6. 定理 3（加面积份额得唯一，扇形）
+
+在定理 2 的 1 维族上，再加面积约束
+
+\[
+\mathrm{Area}(V_2)=\eta\,|\Omega|,\qquad \eta\in(0,1),
+\]
+
+则存在唯一 \(b_\eta\in(a,R)\) 满足（扇形 \(\Omega(R,\alpha)\)、\(p_1=(a,0)\)、路线 A 标准设定）。
+
+### 证明
+
+路线 A 下令 \(A(b):=\mathrm{Area}(V_2(b))\)。当 \(b\uparrow R\) 时月牙 \(V_2\) 缩至边界，\(A(b)\downarrow 0\)；当 \(b\downarrow a\) 时 \(V_2\) 逼近全域，\(A(b)\uparrow A_{\sup}\)。可证 \(A\) 在 \((a,R)\) 上**连续且严格单调减**（命题：径向边无渗漏、内点分区连续）。对给定 \(\eta\in(0,1)\)，由介值定理存在 \(b_\eta\)；严格单调得唯一。∎
+
+---
+
+## 7. 定点个数与解形态（\(N=2\)，共线，\(\mathrm{dof}=2\)）
+
+| 钉点数 | 额外条件 | 解的形态 |
+|--------|----------|----------|
+| 0 | — | 2 维族 |
+| 1 | — | 1 维族（定理 2） |
+| 1 | 面积份额 \(\eta\) | 0 维；扇形上唯一（定理 3） |
+| 2 | — | 两钉联立一般无非退化实解（扇形 v1 双钉：\(b\in\{a,R^2/a\}\)，无 \((a,R)\) 内解） |
+
+**推论链**：\(\mathrm{dof}=2\) 为基准维数；每增加一个独立硬约束（钉点、面积份额等）维数降 1；两独立钉在 \((a,R)\) 内一般超定，仅余边界退化根。
+
+---
+
+## 8. 推理主线
+
+1. **模型**：\(\Omega\) + 乘性性价比 \(\varphi_i=\|x-p_i\|/r_i\) + 边界故事 \(\tau\) → 覆盖与边界一致。
+2. **参数化**：路线 A 将 \(N=2\) 未知收为 \((b,\lambda)\)，钉点 \(M\) 给出 (†)。
+3. **审计**：逐边比较 \(\varphi_1,\varphi_2\) 得 \(m_{\mathrm{eff}}\)；\(m_{\mathrm{eff}}=0\Rightarrow n_{\min}=2\)，否则秩 3 共点增旗 \(\Rightarrow n_{\min}=3\)（定理 1）。
+4. **解空间**：\(\mathrm{dof}=2\) 减钉点/份额约束 \(\Rightarrow\) 无解 / 唯一 / 有限 / 无穷四分类（定理 2、3 及上表）。
+5. **封口规格**：输入 \((\Omega,p_1,\tau)\) → 自动 \(n_{\min}\) → 输出解空间类型与参数化闭式。
+
+---
+
+## 附录：数值复现
+
+本仓库脚本实现上述框架的 Gröbner 消元、\(m_{\mathrm{eff}}\) 审计与解空间分类；**非证明链**，供算例复验。
 
 ```bash
 pip install -r requirements.txt
-```
-
-## 主要脚本
-
-| 脚本 | 用途 |
-|------|------|
-| `solve_land.py` | 原问题封口：\(\Omega,p_1,\tau\) → \(n_{\min}\) + 解空间报告 |
-| `mul_tyson_solve.py` | Gröbner 消元核心 |
-| `mul_tyson_viz.py` | 求解 + 势力区可视化 |
-| `sector_sigma9_verify.py` | 扇形 Σ9 符号/数值验证 |
-| `nmin_decision_audit.py` | 定理 M★ 算例审计 |
-| `verify_guard_params.py` | 矩形/L 形路线 C 守卫参数复算 |
-| `decidability_convex_pin.py` | 凸域单钉自由度实验 |
-| `compare_boundary_story.py` | 与 CGAL/容量泰森对照 |
-| `plot_sector_figures.py` / `plot_l_shape_figures.py` | 标准算例示意图生成（本地 `-o` 输出） |
-
-## 示例
-
-```bash
 python solve_land.py --vertices "0,0 2,0 2,1 0,1" --p1 "0.4,0.5" --tau "0:1 1:2 2:1 3:1"
-python sector_sigma9_verify.py
 python nmin_decision_audit.py
-python verify_guard_params.py
+python sector_sigma9_verify.py
 ```
+
+| 脚本 | 对应环节 |
+|------|----------|
+| `solve_land.py` | 反问题封口：\(\Omega,p_1,\tau\) → \(n_{\min}\) + 解空间 |
+| `mul_tyson_solve.py` | 方程消元 |
+| `nmin_decision_audit.py` | 定理 1 算例审计 |
+| `sector_sigma9_verify.py` | 扇形 Σ9 / 定理 3 数值复现 |
+| `verify_guard_params.py` | \(m_{\mathrm{eff}}\ge 2\) 时路线 C 守卫参数 |
+
+主文稿（完整证明链与形状算例）另行整理，不纳入本仓库版本库。
