@@ -11,11 +11,14 @@ $$
 势力区 $V_i=\{x\in\Omega:\varphi_i(x)\le\varphi_j(x),\,\forall j\neq i\}$。旗 $i$ 与 $j$ 的分界线 $\{\varphi_i=\varphi_j\}$ 为阿波罗尼奥斯圆；$r_i=r_j$ 时退化为直线。边界标签 $\tau$ 指定 $\partial\Omega$ 各边（除分界点外）的目标归属。要求
 
 $$
-\bigcup_{i=1}^N V_i=\Omega,\qquad
-\sigma_{\mathcal S}(s)=\tau(s)\ \text{于}\ s\in\partial\Omega\ \text{（分界点除外）},
+\bigcup_{i=1}^N V_i=\Omega.
 $$
 
-其中 $\sigma_{\mathcal S}(x)=\operatorname{argmin}_i\varphi_i(x)$。
+边界归属：$\sigma_{\mathcal S}(s)=\tau(s)$ 对 $s\in\partial\Omega$ 成立（分界点除外）。其中
+
+$$
+\sigma_{\mathcal S}(x)=\arg\min_i\varphi_i(x).
+$$
 
 **反问题**：已知 $\Omega,p_1,\tau$，求 $(p_2,\ldots,p_N,r_2,\ldots,r_N)$，并判定 $\mathfrak{Sol}$ 为无解、唯一、有限或无穷；无穷时给出参数化闭式。
 
@@ -66,7 +69,7 @@ $$
 **支配场**：
 
 $$
-\sigma_{\mathcal S}(x):=\operatorname{argmin}_{1\le i\le N}\varphi_i(x).
+\sigma_{\mathcal S}(x):=\arg\min_{1\le i\le N}\varphi_i(x).
 $$
 
 ### §1.3 势力分界线：阿波罗尼奥斯圆
@@ -223,7 +226,7 @@ $m_{\mathrm{eff}}\ge 1$ 时第三面旗可取秩 3 配置 $(p_3,r_3)=(p_2,\lambd
 | M.III | 几何分离下界 $n_{\min}^{\mathrm{geo}}\ge 2+m_{\mathrm{eff}}$ |
 | M.IV | 逐边守卫参数存在时 $n_{\min}^{\mathrm{geo}}=2+m_{\mathrm{eff}}$ |
 
-### 已封口与仍开放（主文稿 W.3）
+### 4.10　已证与未证
 
 | 已证 | 未证 |
 |------|------|
@@ -766,6 +769,12 @@ $$
 
 **例 4（L 形）**　$p_2=(0.6,0.25)$，$\lambda=7/8$；$m_{\mathrm{eff}}=2\Rightarrow n_{\min}=3$。
 
+**例 5（矩形顶边审计）**　$W=2,H=1,a=0.5,b=0.7$，$\lambda=(2-b)/(2-a)$。顶边 $\chi_{12}$ 在 $x_Q\approx1.30$ 取极小；渗漏区间 $x\in(0.82,1.95)$；$m_{\mathrm{eff}}=1$。
+
+**例 6（扇形面积锁）**　$R=2,a=0.4$，$\eta=0.2$ 时 $b_\eta\approx0.72$；$\eta=0.5$ 时 $b_\eta\approx0.55$（$A(b)$ 严格单调）。
+
+**例 7（双钉矩形）**　$M=(2,1/2)$ 与 $(1,0)$ 联立 (1.3) 两式，无非退化解。
+
 ---
 
 ## 14　Laguerre 幂图与 MWVD
@@ -776,8 +785,8 @@ $$
 
 ## 15　已证与未证
 
-| 已封口 | 未封口（主文稿） |
-|--------|------------------|
+| 已证 | 未证 |
+|------|------|
 | $\Sigma 9$ 扇形三分 | 一般 $\Omega$ 的 $Z(\Omega)$ 统一指标 |
 | $m_{\mathrm{eff}}\Rightarrow n_{\min}\in\{2,3\}$（秩 3） | 弱 $\mathcal B$ 下 $n_{\min}$ |
 | dof vs $|\Pi|$ 解空间维数 | $m_{\mathrm{eff}}\ge2$ 几何分离完备性 |
@@ -802,18 +811,15 @@ $$
 
 ## 17　判定规格
 
-```
-Ω, p₁, τ
-    → 乘性泰森 \varphiᵢ=d/rᵢ；Viol=σ≠τ；路线 A：p₂=(b,y₀), r₂=λ；钉 M∈Γ₁₂ → (1.3)
-    → 逐边 χ₁₂；得 m_eff
-m_eff=0 ──→ n_min=2（定理 1.1）
-m_eff≥1 ──→ 秩3 (p₃,r₃)=(p₂,λ) → n_min=3（定理 1.1）
-    → 固定 N；数 dof 与 |Π|
-|Π|<dof ──→ 无穷解（引理 2.1）
-|Π|=dof ──→ 查相容（双钉常无解，Σ9-I）
-+η 或 固定 r₂ ──→ 唯一（定理 1.3，Σ9-IV）
-    → 输出：无解 / 唯一 / 有限 / 无穷 + 闭式
-```
+| 步骤 | 条件 | 结论 |
+|------|------|------|
+| 1 | 给定 $\Omega,p_1,\tau$；路线 A | 未知 $(b,\lambda)$；钉 $M\in\Gamma_{12}$ 得 (1.3) |
+| 2 | 逐边 $\chi_{12}$ | $m_{\mathrm{eff}}=|\mathcal E|$ |
+| 3 | $m_{\mathrm{eff}}=0$ | 定理 1.1：$n_{\min}=2$ |
+| 4 | $m_{\mathrm{eff}}\ge1$ | 定理 1.1：秩 3，$n_{\min}=3$ |
+| 5 | $|\Pi|<\mathrm{dof}$ | 引理 2.1：$\dim\mathfrak{Sol}\ge1$ |
+| 6 | $|\Pi|=\mathrm{dof}$ | 查相容；双钉常无解（$\Sigma 9$-I） |
+| 7 | 加 $\eta$ 或固定 $r_2$ | 定理 1.3 / $\Sigma 9$-IV：唯一 |
 
 **情形对照**
 
