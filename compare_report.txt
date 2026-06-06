@@ -1,0 +1,15 @@
+========================================================================
+场景: 矩形：顶边归旗2 + 底中点钉
+边界故事 τ (按边): [2, 2, 1, 1]
+========================================================================
+
+| 方法 | p2 | r2 | 违约边比例 | V2面积比 | 备注 |
+|------|-----|-----|------------|----------|------|
+| CGAL/ESRI 同型 | (1.200,0.350) | 0.6000 | 75% (3边) | 50% | 正问题：给定参数即画划分；不保证 τ |
+| Balzer ISVD 2009 型 | (1.200,0.350) | 5.0000 | 50% (2边) | 95% | 面积份额≈30%；仍不保证顶边归旗2 |
+| 本文 Viol+Π | (0.550,0.350) | 1.3700 | 50% (2边) | 84% | Viol=PASS; class=positive_dim |
+
+结论:
+  - MWVD forward (CGAL/ESRI): sites in, partition out; no boundary story tau.
+  - Capacity Voronoi: tune weights for area; moment constraints, not edge labels.
+  - This work: inverse solve for Viol=0 + pins Pi; three different problems.

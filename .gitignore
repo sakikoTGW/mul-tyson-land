@@ -1,0 +1,10 @@
+# 主文稿本地重写，暂不纳入版本库
+symmetric_sector_theorems.md
+
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# 示意图本地生成，暂不推送
+*.png
+figures/

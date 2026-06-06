@@ -1,0 +1,14 @@
+{
+  "vertices": [[0, 0], [2, 0], [2, 1], [0, 1]],
+  "tau_by_edge": [1, 2, 1, 1],
+  "p1": [0.4, 0.5],
+  "n": 2,
+  "r1": 1.0,
+  "collinear_y": 0.5,
+  "pins": [{"point": [2.0, 0.5], "i": 1, "j": 2}],
+  "interior": [
+    {"point": [0.45, 0.5], "label": 1},
+    {"point": [1.8, 0.5], "label": 2}
+  ],
+  "boundary_samples": 8
+}
